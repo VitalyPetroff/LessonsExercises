@@ -7,8 +7,10 @@ public class Exercise1 {
         arithmetic(a, b);
     }
 
-    public static void arithmetic(int a, int b){
+    private static void arithmetic(int a, int b){
         System.out.println("a + b = " + (a + b));
         System.out.println("a - b = " + (a - b));
+        System.out.println("a * b = " + (a * b));
+        System.out.println("a * b = " + ((double)a / b));
     }
 }
