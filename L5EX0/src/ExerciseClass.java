@@ -3,30 +3,30 @@ import java.util.Scanner;
 public class ExerciseClass {
 
     public static void main(String[] args) {
-//        firstTask();
-//        secondTask();
-//        thirdTask();
-//        forthTask();
+        firstTask();
+        secondTask();
+        thirdTask();
+        forthTask();
         fifthTask();
     }
 
     public static void firstTask(){
         Scanner scan = new Scanner(System.in);
         byte input;
-        byte des;
-        byte ed;
+        byte doz;
+        byte un;
 
         System.out.println("\nЗАДАНИЕ №1");
         System.out.print("Введите двузначное число: ");
         input = scan.nextByte();
-        des = (byte)(input / 10);
-        ed = (byte)(input % 10);
-        if (des == ed) {
+        doz = (byte)(input / 10);
+        un = (byte)(input % 10);
+        if (doz == un) {
             System.out.println("Значения разрядов равны");
-        } else if (des > ed){
-            System.out.println("Большая цифра - " + des + ". Меньшая цифра - " + ed);
+        } else if (doz > un){
+            System.out.println("Большая цифра - " + doz + ". Меньшая цифра - " + un);
         } else {
-            System.out.println("Большая цифра - " + ed + ". Меньшая цифра - " + des);
+            System.out.println("Большая цифра - " + un + ". Меньшая цифра - " + doz);
         }
     }
 
@@ -35,21 +35,21 @@ public class ExerciseClass {
         short input;
         byte th;
         byte hund;
-        byte des;
-        byte ed;
+        byte doz;
+        byte un;
 
         System.out.println("\nЗАДАНИЕ №2");
         System.out.print("Введите четырёхзначное число: ");
         input = scan.nextShort();
         th = (byte)(input / 1000);
         hund = (byte)((input - th * 1000) / 100);
-        des = (byte)((input - th * 1000 - hund * 100) / 10);
-        ed = (byte)(input % 10);
+        doz = (byte)((input - th * 1000 - hund * 100) / 10);
+        un = (byte)(input % 10);
 
         System.out.println("Первый разряд равен " + th);
         System.out.println("Второй разряд равен " + hund);
-        System.out.println("Третий разряд равен " + des);
-        System.out.println("Четвёртый разряд равен " + ed);
+        System.out.println("Третий разряд равен " + doz);
+        System.out.println("Четвёртый разряд равен " + un);
     }
 
     public static void thirdTask(){
