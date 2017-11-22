@@ -21,7 +21,7 @@ public class Exercise1 {
     }
 
     private static void arithmetic(int a, int b){
-        System.out.println("АРИФМЕТИЧЕСКИЕ ОПЕРАЦИИ: ");
+        System.out.println("\nАРИФМЕТИЧЕСКИЕ ОПЕРАЦИИ: ");
         System.out.println("a + b = " + (a + b));
         System.out.println("a - b = " + (a - b));
         System.out.println("a * b = " + (a * b));
@@ -29,7 +29,7 @@ public class Exercise1 {
     }
 
     private static void binary(int a, int b){
-        System.out.println("БИНАРНЫЕ ОПЕРАЦИИ: ");
+        System.out.println("\nБИНАРНЫЕ ОПЕРАЦИИ: ");
         System.out.println("a | b = " + (a | b));
         System.out.println("a & b = " + (a & b));
         System.out.println("a ^ b = " + (a ^ b));
@@ -38,6 +38,7 @@ public class Exercise1 {
     }
 
     private static void logical(boolean first, boolean second){
+        System.out.println("\nЛОГИЧЕСКИЕ ОПЕРАЦИИ :");
         System.out.println("a || b = " + (first || second));
         System.out.println("a && b = " + (first && second));
         System.out.println("!a = " + !first);
@@ -45,6 +46,7 @@ public class Exercise1 {
     }
 
     private static void condition(boolean condition){
+        System.out.println("\n Проверка условия :");
         if (condition){
             System.out.println("TRUE!");
         } else {
@@ -54,6 +56,7 @@ public class Exercise1 {
 
     private static void ternary(boolean condition, int first, int second){
         int result;
+        System.out.println("\n Работа тернарного оператора :");
         result = (condition ? first : second);
         System.out.println("Result = " + result);
     }
