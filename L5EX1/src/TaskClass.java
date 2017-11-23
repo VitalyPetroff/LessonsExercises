@@ -3,11 +3,11 @@ import java.util.Scanner;
 public class TaskClass {
 
     public static void main(String[] args) {
-//        firstTask();
-//        secondTask();
-//        thirdTask();
-//        forthTask();
-//        fifthTask();
+        firstTask();
+        secondTask();
+        thirdTask();
+        forthTask();
+        fifthTask();
         sixthTask();
     }
 
@@ -15,7 +15,7 @@ public class TaskClass {
         Scanner scan = new Scanner(System.in);
         double n, k, res;
 
-        System.out.println("\nЗадание №1");
+        System.out.println("ЗАДАНИЕ №1");
         System.out.print("Введите n = ");
         n = scan.nextInt();
         System.out.print("Введите k = ");
@@ -32,7 +32,7 @@ public class TaskClass {
         int day;
         String result;
 
-        System.out.println("ЗАДАНИЕ №2");
+        System.out.println("\nЗАДАНИЕ №2");
         System.out.print("Введите номер дня недели :");
         day = scan.nextInt();
         switch (day) {
@@ -133,7 +133,7 @@ public class TaskClass {
         int sum = 0;
         double average;
 
-        System.out.println("\nЗАДАНИЕ №4");
+        System.out.println("\nЗАДАНИЕ №5");
         System.out.println("Сформированный массив:");
         for (int i = 0; i < N; i++){
             for (int j = 0; j < M; j++) {
