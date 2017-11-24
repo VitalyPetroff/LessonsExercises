@@ -44,7 +44,7 @@ public class MassiveComparsion {
     public int comparsionOfArray(int[] arr1, int[] arr2){
         int count = 0;
         for (int indArr1 = 0; indArr1 < arr1.length; indArr1++){
-            for (int indArr2 = 0; indArr2< arr2.length; indArr2++){
+            for (int indArr2 = 0; indArr2 < arr2.length; indArr2++){
                 if (arr1[indArr1] == arr2[indArr2]){
                     count++;
                 }
