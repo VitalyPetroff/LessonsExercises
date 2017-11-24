@@ -13,6 +13,7 @@ public class MassiveComparsion {
         // вывод на экран массивов
         ClassMass.printArray(array1);
         ClassMass.printArray(array2);
+
         // считаем количество подобных элементов
         int N = ClassMass.comparsionOfArray(array1, array2);
         System.out.println("Количество совпадений - " + N);
