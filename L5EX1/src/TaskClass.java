@@ -3,17 +3,19 @@ import java.util.Scanner;
 public class TaskClass {
 
     public static void main(String[] args) {
-        firstTask();
-        secondTask();
-        thirdTask();
-        forthTask();
+//        firstTask();
+//        secondTask();
+//        thirdTask();
+//        forthTask();
         fifthTask();
-        sixthTask();
+//        sixthTask();
     }
 
     public static void firstTask(){
         Scanner scan = new Scanner(System.in);
-        double n, k, res;
+        double n;
+        double k;
+        double res;
 
         System.out.println("ЗАДАНИЕ №1");
         System.out.print("Введите n = ");
@@ -127,8 +129,8 @@ public class TaskClass {
 
     public static void fifthTask(){
         Scanner scan = new Scanner(System.in);
-        int N = 10;     // число строк
-        int M = 5;      // число столбцов
+        int N = 2000;     // число строк
+        int M = 2000;      // число столбцов
         int[][] mass = new int[N][M];
         int sum = 0;
         double average;
@@ -137,10 +139,10 @@ public class TaskClass {
         System.out.println("Сформированный массив:");
         for (int i = 0; i < N; i++){
             for (int j = 0; j < M; j++) {
-                mass[i][j] = (int) (Math.random() * 100);
-                System.out.print(mass[i][j] + "\t");
+                mass[i][j] = (int) (Math.random() * 100 + 1);
+//                System.out.print(mass[i][j] + "\t");
             }
-            System.out.print("\n");
+//            System.out.print("\n");
         }
 
         for (int i = 0; i < N; i++){
