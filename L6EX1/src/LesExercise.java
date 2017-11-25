@@ -2,7 +2,8 @@ public class LesExercise {
 
 
     public static void main(String[] args) {
-        LesExercise Exercise = new LesExercise();
+        // === ЗАДАНИЕ 1 ===
+        ExerciseSort Exercise = new ExerciseSort();
         int lengthOfMassive = 20;
         int[] array = new int[lengthOfMassive];
 
@@ -10,35 +11,23 @@ public class LesExercise {
         Exercise.printMassive(array);
         array = Exercise.sortMassive(array);
         Exercise.printMassive(array);
-    }
 
-    public int[] formMassive(int length){
-        int[] mass = new int[length];
-        for (int index = 0; index < length; index++){
-            mass[index] = (int)(Math.random() * 10);
-        }
-        return mass;
-    }
+        // === ЗАДАНИЕ 2 ===
+        String str = "ga gaga asf ddd345 dd44 d168";
+        ExerciseString Ex2 = new ExerciseString();
+        Ex2.printString(str);   // вывод строки в консоль
 
-    public void printMassive(int[] mass){
-        System.out.println("Вывод массива в консоль:");
-        for (int element : mass){
-            System.out.print(element + "\t");
-        }
-        System.out.println("\n");
-    }
+        char[] charArray = Ex2.stringToChar(str);   // преобразование строки в массив символов
 
-    public int[] sortMassive(int[] mass){
-        int temp;
-        for (int i = 0; i < mass.length - 1; i++){
-            for (int j = 0; j < mass.length - 1; j++){
-                if (mass[j] > mass[j + 1]){
-                    temp = mass[j + 1];
-                    mass[j + 1] = mass[j];
-                    mass[j] = temp;
-                }
-            }
-        }
-        return mass;
+        Ex2.printArrOfChar(charArray);   // вывод массива символов в консоль
+
+        int numOfSymbol = Ex2.countOfSymbol(charArray); // подсчёт количества различных символов
+
+        char[] arrOfSymbols = new char[numOfSymbol];
+        arrOfSymbols = Ex2.formArrOfSymbol(charArray, numOfSymbol); // формирование массива с различными символами
+
+        Ex2.printArrOfChar(arrOfSymbols); // вывод массива с различными символами в консоль
+
+        Ex2.printNumOfSymbol(charArray, arrOfSymbols); // подсчёт количества различных символов
     }
 }
