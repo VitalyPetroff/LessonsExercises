@@ -13,13 +13,13 @@ public class GraphInConsole {
         double deltaY = (maxY - minY) / (numOfLine - 1);
         int[] yTransform = new int[numOfColumn];
         for (int i = 0; i < numOfColumn; i++) {
-            yTransform[i] = (int)(Math.round((maxY - vectorY[i]) / deltaY));
+            yTransform[i] = (int) (Math.round((maxY - vectorY[i]) / deltaY));
         }
         return yTransform;
     }
 
     // формирование осей
-    private void formAxis(){
+    private void formAxis() {
         arrToConsole = new char[numOfLine][numOfColumn];
         for (int i = 0; i < numOfLine; i++) {
             arrToConsole[i][0] = '|';
