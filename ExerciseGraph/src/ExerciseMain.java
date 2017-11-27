@@ -9,13 +9,13 @@ public class ExerciseMain {
         int lengthX = 160;
 
         VectorXY func = new VectorXY();
-        double[] vectorX = func.formVectorX(minX, maxX, lengthX);   // формирование вектора x
-        double[] vectorY = func.calculationOfVectorY(vectorX);      // формирование вектора y
+        double[] vectorX = func.formVectorX(minX, maxX, lengthX);   // формирование вектора X
+        double[] vectorY = func.calculationOfVectorY(vectorX);      // формирование вектора Y
 
         GraphInConsole graph = new GraphInConsole();
 
-        int[] yTransform = graph.transformerY(vectorY);
-        char[][] arr = graph.vectorToArray(yTransform);
-        graph.printArrInConsole(arr);
+        int[] yTransform = graph.transformerY(vectorY); // преобразование вектора Y
+        char[][] arr = graph.vectorToArray(yTransform); // преобразование вектора в символьную матрицу
+        graph.printArrInConsole(arr);   // отображение матрицы в консоле
     }
 }
