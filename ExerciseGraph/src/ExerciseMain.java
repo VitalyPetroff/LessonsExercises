@@ -6,7 +6,7 @@ public class ExerciseMain {
         final double PI = 3.1415926536;
         double minX = 0;
         double maxX = PI * 10;
-        int lengthX = 160;
+        int lengthX = 150;
 
         VectorXY func = new VectorXY();
         double[] vectorX = func.formVectorX(minX, maxX, lengthX);   // формирование вектора X
