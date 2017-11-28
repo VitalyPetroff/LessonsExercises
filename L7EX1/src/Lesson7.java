@@ -8,8 +8,8 @@ public class Lesson7 {
         System.out.println("Message");
     }
 
-    public static void print(){
+    static void print(String msg){
         System.out.println("New Message");
-        System.out.println("New msg +1");
+        System.out.println("New msg + 1");
     }
 }
