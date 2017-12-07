@@ -57,11 +57,11 @@ public class Car {
                 realDistance = remainOfFuel / fuelConsumption * 100;
                 fuellnTank = 0;
                 throw new IllegalStateException("!!! Бак пуст. Затрачено " + remainOfFuel +
-                        " л. Пройденное расстояние составляет " + realDistance + " км" );
+                        " л. Пройденное расстояние составляет " + realDistance + " км");
             }
         } catch (IllegalStateException ex) {
             System.out.println(ex.getMessage());
-        }finally {
+        } finally {
             milleage += realDistance;
             printInfo();
         }
