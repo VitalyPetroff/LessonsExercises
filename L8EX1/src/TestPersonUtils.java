@@ -23,5 +23,7 @@ public class TestPersonUtils {
 
         Person man6 = new Person("ФедОр", new Date(83, 11, 5));
         security.analyzeOfAge(man6);
+
+        security.printSuspects();
     }
 }
