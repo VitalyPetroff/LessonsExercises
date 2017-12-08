@@ -1,27 +1,24 @@
 public class TestCreature {
 
     public static void main(String[] args) {
-        Dog objDog = new Dog("Собака", 40, 10);
-        Cat objCat = new Cat("Кот", 8, 20);
-        Bug objBug = new Bug("Жук", 0.1f, 1);
-        Chicken objChicken = new Chicken("Цыплёнок", 1, 25);
-        Mouse objMouse = new Mouse("Мышь", 0.5f, 2);
-        Man objMan = new Man("Абырвалг", 80, 2, "Семён", "Николаевич");
 
-        objDog.consume(objBug);
-        objDog.consume(objCat);
-        objDog.consume(objChicken);
-        objDog.consume(objMan);
+        Creature[] arrayOfObjects = new Creature[6];
+        arrayOfObjects[0] = new Dog("Собака", 40, 10);
+        arrayOfObjects[1] = new Cat("Кот", 8, 20);
+        arrayOfObjects[2] = new Bug("Жук", 0.1f, 1);
+        arrayOfObjects[3] = new Chicken("Цыплёнок", 1, 25);
+        arrayOfObjects[4] = new Mouse("Мышь", 0.5f, 2);
+        arrayOfObjects[5] = new Man("Чувак", 80, 2, "Семён", "Николаевич");
 
-        objCat.consume(objBug);
-        objCat.consume(objCat);
-        objCat.consume(objChicken);
-        objCat.consume(objDog);
-
-        objMouse.consume(objCat);
-        objMouse.consume(objBug);
-
-        objMan.consumer(objBug);
-        objMan.consumer(objChicken);
+        for (Creature typeOfCreature : arrayOfObjects) {
+            for (Creature food : arrayOfObjects) {
+                try {
+                    typeOfCreature.consume(food);
+                } catch (IllegalArgumentException e) {
+                    System.out.println(typeOfCreature.getTitle() + " не употребляет в пищу " + food.getTitle());
+                }
+            }
+            System.out.println("==========");
+        }
     }
 }

@@ -1,8 +1,8 @@
 public class Creature {
 
-    protected String title = "Сущность";
-    protected float mass = 10.0f;
-    protected int percent = 50;
+    protected final String title;
+    protected float mass;
+    protected int percent;
 
     Creature(String title, float mass, int percent) {
         this.title = title;
@@ -10,7 +10,8 @@ public class Creature {
         this.percent = percent;
     }
 
-    private void consume(Creature creature){
+    public void consume(Creature food){
+        System.out.println("Тут кто-то кого-то пытается есть...");
     }
 
     public float getMass() {

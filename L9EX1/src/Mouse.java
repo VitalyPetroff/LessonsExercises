@@ -4,15 +4,12 @@ public class Mouse extends Animal{
         super(title, mass, percent);
     }
 
-    public void consume(Creature creature){
-        try{
-            if (creature instanceof Bug) {
-                System.out.println(title + " съел " + creature.getTitle() + ". Усвоилось " + (creature.mass * percent / 100));
-            } else {
-                throw new IllegalArgumentException();
-            }
-        } catch (IllegalArgumentException ex){
-            System.out.println(title + " не ест " + creature.getTitle());
+    public void consume(Creature food) throws IllegalArgumentException{
+        if (food instanceof Bug) {
+            System.out.println(title + " съел " + food.getTitle() +
+                    ". Усвоилось " + (food.mass * percent / 100) + " кг");
+        } else {
+            throw new IllegalArgumentException();
         }
     }
 }
