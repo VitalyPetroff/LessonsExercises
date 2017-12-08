@@ -9,12 +9,12 @@ public class Dog extends Animal {
             if ((creature instanceof Cat) ||
                     (creature instanceof Chicken) ||
                     (creature instanceof Man)) {
-                System.out.println("Съели " + creature.getTitle() + ". Усвоилось " + (creature.mass * percent / 100));
+                System.out.println(title + " съел " + creature.getTitle() + ". Усвоилось " + (creature.mass * percent / 100));
             } else {
                 throw new IllegalArgumentException();
             }
         } catch (IllegalArgumentException ex) {
-            System.out.println(this.getTitle() + " не ест " + creature.getTitle());
+            System.out.println(title + " не ест " + creature.getTitle());
         }
     }
 }
