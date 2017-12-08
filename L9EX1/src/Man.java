@@ -1,17 +1,19 @@
 public class Man extends Creature{
 
-    private final String firstName = "Петя";
-    private final String lastName = "Лошариков";
+    private final String firstName;
+    private final String lastName;
 
-    public void consume(Creature creature){
-        System.out.println("Класс Man");
+    public Man(String title, float mass, int percent, String firstName, String lastName){
+        super(title, mass, percent);
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
-    public String getFirstName() {
+    public String getFirstName(){
         return firstName;
     }
 
-    public String getLastName() {
+    public String getLastName(){
         return lastName;
     }
 }

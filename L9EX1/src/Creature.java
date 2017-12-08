@@ -1,20 +1,27 @@
 public class Creature {
 
-    private final String title;
-    private float mass;
-    private final int consumePercentage;
+    protected String title = "Сущность";
+    protected float mass = 10.0f;
+    protected int percent = 50;
 
-    Creature(){
-        title = "Название";
-        mass = 80.11f;
-        consumePercentage = 80;
+    Creature(String title, float mass, int percent) {
+        this.title = title;
+        this.mass = mass;
+        this.percent = percent;
+    }
+
+    private void consume(Creature creature){
+    }
+
+    public float getMass() {
+        return mass;
+    }
+
+    public int getPercent() {
+        return percent;
     }
 
     public String getTitle(){
         return title;
-    }
-
-    private void consume(Creature creature){
-        System.out.println("Класс Creature" + creature.consumePercentage);
     }
 }

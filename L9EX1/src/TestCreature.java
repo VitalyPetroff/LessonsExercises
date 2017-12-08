@@ -1,16 +1,11 @@
 public class TestCreature {
 
     public static void main(String[] args) {
-        Creature objCreature = new Creature();
-        Animal objAnimal = new Animal();
-        Man objMan = new Man();
+        Dog objDog = new Dog("Собака", 40, 10);
+        Cat objCat = new Cat("Кот", 8, 20);
+        Bug objBug = new Bug("Жук", 0.1f, 1);
 
-        objCreature.getTitle();
-
-        objAnimal.getTitle();
-        objAnimal.consume(objCreature);
-
-        objMan.getTitle();
-        objMan.consume(objCreature);
+        objDog.consume(objBug);
+        objDog.consume(objCat);
     }
 }
