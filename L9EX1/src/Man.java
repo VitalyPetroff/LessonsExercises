@@ -1,10 +1,12 @@
-public class Man extends Creature {
+public final class Man extends Creature {
 
     private final String firstName;
     private final String lastName;
 
     public Man(String title, float mass, int percent, String firstName, String lastName) {
-        super(title, mass, percent);
+        this.title = title;
+        this.mass = mass;
+        this.percent = percent;
         this.firstName = firstName;
         this.lastName = lastName;
     }

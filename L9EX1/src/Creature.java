@@ -1,18 +1,10 @@
-public class Creature {
+public abstract class Creature {
 
-    protected final String title;
+    protected String title;
     protected float mass;
     protected int percent;
 
-    Creature(String title, float mass, int percent) {
-        this.title = title;
-        this.mass = mass;
-        this.percent = percent;
-    }
-
-    public void consume(Creature food){
-        System.out.println("Тут кто-то кого-то пытается есть...");
-    }
+    public abstract void consume(Creature food);
 
     public float getMass() {
         return mass;
