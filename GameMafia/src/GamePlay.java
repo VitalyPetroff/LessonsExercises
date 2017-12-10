@@ -5,40 +5,60 @@ public class GamePlay {
 
     public static void main(String[] args) {
 
-        Set <Person> players = new HashSet<>();
+        Set<Person> players = new HashSet<>();
 
-        Person[] civilians = new Person[5];
-        for (Person player : civilians){
-            player = new Person("CIVILIAN");
-            player.printPersonsInformation();
+        gameInitialization(players);
+        night(players);
+        printInfo(players);
+        day(players);
+        printInfo(players);
+    }
+
+    public static void gameInitialization(Set<Person> players) {
+        for (int i = 0; i < 5; i++) {
+            Person player = new Person("CIVILIAN");
             players.add(player);
         }
 
-        Person[] mafiozi = new Person[2];
-        for (Person player : mafiozi){
-            player = new Person("MAFIA");
-            player.printPersonsInformation();
+        for (int i = 0; i < 2; i++) {
+            Person player = new Person("MAFIOSI");
             players.add(player);
         }
+        printInfo(players);
     }
 
-    public static Set<Person> night (Set<Person> players){
-        boolean choiceIsRight = false;
-        while(!choiceIsRight) {
-            int choice = (int)(Math.random() * players.size());
-            players.get
+    public static Set<Person> night(Set<Person> players) {
+        System.out.println("\nНаступила НОЧЬ");
+        for (Person player : players) {
+            if (player.getProfession().equals("CIVILIAN")) {
+                System.out.print("Мафия убила: ");
+                player.printPersonsInformation();
+                players.remove(player);
+                break;
+            }
         }
+        return players;
     }
 
-    public static Set<Person> day (Set<Person> players){
-
+    public static Set<Person> day(Set<Person> players) {
+        System.out.println("\nНаступил ДЕНЬ");
+        for (Person player : players) {
+            System.out.print("Решено убить: ");
+            player.printPersonsInformation();
+            players.remove(player);
+            break;
+        }
+        return players;
     }
 
     public static boolean checkGameState (Set<Person> players){
 
     }
 
-    public static void printInfo(Set<Person> players){
-
+    public static void printInfo(Set<Person> players) {
+        System.out.println("CОСТАВ ИГРОКОВ:");
+        for (Person player : players) {
+            player.printPersonsInformation();
+        }
     }
 }

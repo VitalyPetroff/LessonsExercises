@@ -31,4 +31,8 @@ public class Person {
     public void printPersonsInformation() {
         System.out.println(lastName + " " + firstName + " " + profession);
     }
+
+    public String getProfession(){
+        return profession;
+    }
 }
