@@ -14,7 +14,7 @@ public class GamePlay {
         while (true) {
             night(players);
             scan.next();
-            printInfo(players);
+//            printInfo(players);
             gameStatus = checkGameState(players);
             if (gameStatus){
                 System.out.println("ИГРА ОКОНЧЕНА");
@@ -22,7 +22,7 @@ public class GamePlay {
             }
             day(players);
             scan.next();
-            printInfo(players);
+//            printInfo(players);
             gameStatus = checkGameState(players);
             if (gameStatus){
                 System.out.println("ИГРА ОКОНЧЕНА");
@@ -79,12 +79,14 @@ public class GamePlay {
             }
         }
         if ((countOfMafiosi > countOfCivilians) ||
-                (countOfMafiosi > ((countOfCivilians + countOfMafiosi) / 2))){
+                (countOfMafiosi >= (Math.ceil(countOfCivilians + countOfMafiosi) / 2))){
             System.out.println("Мафия ПОБЕДИЛА !!!");
+            printInfo(players);
             return true;
         }
         if (countOfMafiosi == 0){
             System.out.println("Мафия проиграла !!!");
+            printInfo(players);
             return true;
         }
         return false;
