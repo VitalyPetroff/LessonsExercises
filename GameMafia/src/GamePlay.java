@@ -1,17 +1,34 @@
 import java.util.HashSet;
+import java.util.Scanner;
 import java.util.Set;
 
 public class GamePlay {
 
     public static void main(String[] args) {
 
+        Scanner scan = new Scanner(System.in);
         Set<Person> players = new HashSet<>();
 
         gameInitialization(players);
-        night(players);
-        printInfo(players);
-        day(players);
-        printInfo(players);
+        boolean gameStatus;
+        while (true) {
+            night(players);
+            scan.next();
+            printInfo(players);
+            gameStatus = checkGameState(players);
+            if (gameStatus){
+                System.out.println("ИГРА ОКОНЧЕНА");
+                break;
+            }
+            day(players);
+            scan.next();
+            printInfo(players);
+            gameStatus = checkGameState(players);
+            if (gameStatus){
+                System.out.println("ИГРА ОКОНЧЕНА");
+                break;
+            }
+        }
     }
 
     public static void gameInitialization(Set<Person> players) {
@@ -52,7 +69,25 @@ public class GamePlay {
     }
 
     public static boolean checkGameState (Set<Person> players){
-
+        int countOfMafiosi = 0;
+        int countOfCivilians = 0;
+        for (Person player : players){
+            if (player.getProfession().equals("MAFIOSI")){
+                countOfMafiosi++;
+            } else {
+                countOfCivilians++;
+            }
+        }
+        if ((countOfMafiosi > countOfCivilians) ||
+                (countOfMafiosi > ((countOfCivilians + countOfMafiosi) / 2))){
+            System.out.println("Мафия ПОБЕДИЛА !!!");
+            return true;
+        }
+        if (countOfMafiosi == 0){
+            System.out.println("Мафия проиграла !!!");
+            return true;
+        }
+        return false;
     }
 
     public static void printInfo(Set<Person> players) {
