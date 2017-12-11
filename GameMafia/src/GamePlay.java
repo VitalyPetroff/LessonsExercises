@@ -1,6 +1,4 @@
-import java.util.HashSet;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
 public class GamePlay {
 
@@ -16,7 +14,7 @@ public class GamePlay {
             scan.next();
 //            printInfo(players);
             gameStatus = checkGameState(players);
-            if (gameStatus){
+            if (gameStatus) {
                 System.out.println("ИГРА ОКОНЧЕНА");
                 break;
             }
@@ -24,7 +22,7 @@ public class GamePlay {
             scan.next();
 //            printInfo(players);
             gameStatus = checkGameState(players);
-            if (gameStatus){
+            if (gameStatus) {
                 System.out.println("ИГРА ОКОНЧЕНА");
                 break;
             }
@@ -32,7 +30,7 @@ public class GamePlay {
     }
 
     public static void gameInitialization(Set<Person> players) {
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 6; i++) {
             Person player = new Person("CIVILIAN");
             players.add(player);
         }
@@ -45,12 +43,19 @@ public class GamePlay {
     }
 
     public static Set<Person> night(Set<Person> players) {
+        List<Person> arrListPlayers = new ArrayList<>(players);
+        players.clear();
+
         System.out.println("\nНаступила НОЧЬ");
-        for (Person player : players) {
-            if (player.getProfession().equals("CIVILIAN")) {
+        int choice;
+        while (true) {
+            choice = (int) (Math.random() * arrListPlayers.size());
+            if (arrListPlayers.get(choice).getProfession().equals("CIVILIAN")) {
                 System.out.print("Мафия убила: ");
-                player.printPersonsInformation();
-                players.remove(player);
+                arrListPlayers.get(choice).printPersonsInformation();
+                arrListPlayers.remove(choice);
+                players.addAll(arrListPlayers);
+//                printInfo(players);
                 break;
             }
         }
@@ -58,44 +63,47 @@ public class GamePlay {
     }
 
     public static Set<Person> day(Set<Person> players) {
+        List<Person> arrListPlayers = new ArrayList<>(players);
+        players.clear();
+
         System.out.println("\nНаступил ДЕНЬ");
-        for (Person player : players) {
-            System.out.print("Решено убить: ");
-            player.printPersonsInformation();
-            players.remove(player);
-            break;
-        }
+        int choice = (int) (Math.random() * arrListPlayers.size());
+        System.out.print("Решено убить: ");
+        arrListPlayers.get(choice).printPersonsInformation();
+        arrListPlayers.remove(choice);
+        players.addAll(arrListPlayers);
+        printInfo(players);
         return players;
     }
 
-    public static boolean checkGameState (Set<Person> players){
-        int countOfMafiosi = 0;
-        int countOfCivilians = 0;
-        for (Person player : players){
-            if (player.getProfession().equals("MAFIOSI")){
-                countOfMafiosi++;
-            } else {
-                countOfCivilians++;
-            }
+public static boolean checkGameState(Set<Person> players){
+        int countOfMafiosi=0;
+        int countOfCivilians=0;
+        for(Person player:players){
+        if(player.getProfession().equals("MAFIOSI")){
+        countOfMafiosi++;
+        }else{
+        countOfCivilians++;
         }
-        if ((countOfMafiosi > countOfCivilians) ||
-                (countOfMafiosi >= (Math.ceil(countOfCivilians + countOfMafiosi) / 2))){
-            System.out.println("Мафия ПОБЕДИЛА !!!");
-            printInfo(players);
-            return true;
         }
-        if (countOfMafiosi == 0){
-            System.out.println("Мафия проиграла !!!");
-            printInfo(players);
-            return true;
+        if((countOfMafiosi>countOfCivilians)||
+        (countOfMafiosi>=(Math.ceil(countOfCivilians+countOfMafiosi)/2))){
+        System.out.println("Мафия ПОБЕДИЛА !!!");
+        printInfo(players);
+        return true;
+        }
+        if(countOfMafiosi==0){
+        System.out.println("Мафия проиграла !!!");
+        printInfo(players);
+        return true;
         }
         return false;
-    }
-
-    public static void printInfo(Set<Person> players) {
-        System.out.println("CОСТАВ ИГРОКОВ:");
-        for (Person player : players) {
-            player.printPersonsInformation();
         }
-    }
-}
+
+public static void printInfo(Set<Person> players){
+        System.out.println("CОСТАВ ИГРОКОВ:");
+        for(Person player:players){
+        player.printPersonsInformation();
+        }
+        }
+        }
