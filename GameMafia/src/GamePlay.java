@@ -72,38 +72,38 @@ public class GamePlay {
         arrListPlayers.get(choice).printPersonsInformation();
         arrListPlayers.remove(choice);
         players.addAll(arrListPlayers);
-        printInfo(players);
+//        printInfo(players);
         return players;
     }
 
-public static boolean checkGameState(Set<Person> players){
-        int countOfMafiosi=0;
-        int countOfCivilians=0;
-        for(Person player:players){
-        if(player.getProfession().equals("MAFIOSI")){
-        countOfMafiosi++;
-        }else{
-        countOfCivilians++;
+    public static boolean checkGameState(Set<Person> players) {
+        int countOfMafiosi = 0;
+        int countOfCivilians = 0;
+        for (Person player : players) {
+            if (player.getProfession().equals("MAFIOSI")) {
+                countOfMafiosi++;
+            } else {
+                countOfCivilians++;
+            }
         }
+        if ((countOfMafiosi > countOfCivilians) ||
+                (countOfMafiosi >= (Math.ceil(countOfCivilians + countOfMafiosi) / 2))) {
+            System.out.println("Мафия ПОБЕДИЛА !!!");
+            printInfo(players);
+            return true;
         }
-        if((countOfMafiosi>countOfCivilians)||
-        (countOfMafiosi>=(Math.ceil(countOfCivilians+countOfMafiosi)/2))){
-        System.out.println("Мафия ПОБЕДИЛА !!!");
-        printInfo(players);
-        return true;
-        }
-        if(countOfMafiosi==0){
-        System.out.println("Мафия проиграла !!!");
-        printInfo(players);
-        return true;
+        if (countOfMafiosi == 0) {
+            System.out.println("Мафия проиграла !!!");
+            printInfo(players);
+            return true;
         }
         return false;
-        }
+    }
 
-public static void printInfo(Set<Person> players){
+    public static void printInfo(Set<Person> players) {
         System.out.println("CОСТАВ ИГРОКОВ:");
-        for(Person player:players){
-        player.printPersonsInformation();
+        for (Person player : players) {
+            player.printPersonsInformation();
         }
-        }
-        }
+    }
+}
