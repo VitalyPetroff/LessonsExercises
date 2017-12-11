@@ -2,6 +2,9 @@ import java.util.*;
 
 public class GamePlay {
 
+    private static final int NUMBER_OF_CIVILIANS = 5;
+    private static final int NUMBER_OF_MAFIOSI = 2;
+
     public static void main(String[] args) {
 
         Scanner scan = new Scanner(System.in);
@@ -30,12 +33,12 @@ public class GamePlay {
     }
 
     public static void gameInitialization(Set<Person> players) {
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < NUMBER_OF_CIVILIANS; i++) {
             Person player = new Person("CIVILIAN");
             players.add(player);
         }
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < NUMBER_OF_MAFIOSI; i++) {
             Person player = new Person("MAFIOSI");
             players.add(player);
         }
@@ -43,17 +46,17 @@ public class GamePlay {
     }
 
     public static Set<Person> night(Set<Person> players) {
-        List<Person> arrListPlayers = new ArrayList<>(players);
-        players.clear();
-
         System.out.println("\nНаступила НОЧЬ");
-        int choice;
+
+        List<Person> arrListPlayers = new ArrayList<>(players);
         while (true) {
+            int choice;
             choice = (int) (Math.random() * arrListPlayers.size());
             if (arrListPlayers.get(choice).getProfession().equals("CIVILIAN")) {
                 System.out.print("Мафия убила: ");
                 arrListPlayers.get(choice).printPersonsInformation();
                 arrListPlayers.remove(choice);
+                players.clear();
                 players.addAll(arrListPlayers);
 //                printInfo(players);
                 break;
@@ -64,13 +67,13 @@ public class GamePlay {
 
     public static Set<Person> day(Set<Person> players) {
         List<Person> arrListPlayers = new ArrayList<>(players);
-        players.clear();
 
         System.out.println("\nНаступил ДЕНЬ");
         int choice = (int) (Math.random() * arrListPlayers.size());
         System.out.print("Решено убить: ");
         arrListPlayers.get(choice).printPersonsInformation();
         arrListPlayers.remove(choice);
+        players.clear();
         players.addAll(arrListPlayers);
 //        printInfo(players);
         return players;
@@ -87,7 +90,7 @@ public class GamePlay {
             }
         }
         if ((countOfMafiosi > countOfCivilians) ||
-                (countOfMafiosi >= (Math.ceil(countOfCivilians + countOfMafiosi) / 2))) {
+                (countOfMafiosi > (players.size() / 2))) {
             System.out.println("Мафия ПОБЕДИЛА !!!");
             printInfo(players);
             return true;

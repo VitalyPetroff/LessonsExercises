@@ -1,5 +1,7 @@
 public class Person {
 
+    private static final int NUMBERS_OF_PLAYERS = 6;
+
     private String firstName;
     private String lastName;
     private String profession;
@@ -22,9 +24,8 @@ public class Person {
             "Хлопкин"};
 
     public Person(String profession) {
-        this.firstName = FIRST_NAMES[(int) (Math.random() * 6)];
-
-        this.lastName = LAST_NAMES[(int) (Math.random() * 6)];
+        this.firstName = FIRST_NAMES[(int) (Math.random() * NUMBERS_OF_PLAYERS)];
+        this.lastName = LAST_NAMES[(int) (Math.random() * NUMBERS_OF_PLAYERS)];
         this.profession = profession;
     }
 
