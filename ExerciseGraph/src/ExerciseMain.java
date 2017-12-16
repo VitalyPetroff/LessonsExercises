@@ -4,8 +4,8 @@ public class ExerciseMain {
 
         // интервал задания функции и количество расчётных точек
         final double PI = 3.1415926536;
-        double minX = 0;
-        double maxX = PI * 10;
+        double minX = -50;
+        double maxX = 50;
         int lengthX = 150;
 
         VectorXY func = new VectorXY();

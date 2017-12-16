@@ -22,6 +22,42 @@ public class Man {
         return str;
     }
 
+    public consumeAll(){
+
+    }
+
+    public int getForce(){
+        return force;
+    }
+
+    public void setForce(int force) {
+        this.force = force;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getCharisma() {
+        return charisma;
+    }
+
+    public void setCharisma(int charisma) {
+        this.charisma = charisma;
+    }
+
+    public int getIntellect() {
+        return intellect;
+    }
+
+    public void setIntellect(int intellect) {
+        this.intellect = intellect;
+    }
+
     public float getMoney() {
         return money;
     }

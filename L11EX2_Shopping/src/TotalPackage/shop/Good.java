@@ -4,9 +4,10 @@ import TotalPackage.Man;
 
 public abstract class Good {
 
-    private String nameofGood;
-    private float priceOfGood;
-    private Man ownerOfGood;
+    protected String nameofGood;
+    protected float priceOfGood;
+    protected Man ownerOfGood;
+    protected int factorOfGood;
 
     protected Good(String nameofGoods){
         this.nameofGood = nameofGood;

@@ -2,7 +2,7 @@ public class VectorXY {
 
     // вычисление значения функции y = f(x)
     private static double valueOfFunction(double x) {
-        return (Math.sin(x) * Math.exp(-0.075 * x));
+        return (x * x * x);
     }
 
     // формирование вектора X
