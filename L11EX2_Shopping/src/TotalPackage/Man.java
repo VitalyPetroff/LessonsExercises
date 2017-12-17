@@ -11,7 +11,7 @@ public class Man {
     private int charisma = 1;
     private int intellect = 1;
     private float money = 100;
-//    private static final List<Goods> goodsOfMan = new listOfGoods;
+    public static List<Good> goodsOfMan;
 
     public String toString(){
         String str = "Имя: " + name +

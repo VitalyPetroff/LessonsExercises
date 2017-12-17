@@ -2,31 +2,33 @@ package TotalPackage;
 
 import TotalPackage.shop.*;
 
-import java.util.Arrays;
-
 public class Application {
 
-    // исходное количество товаров в магазине
-    private static final int QUANTITY_OF_GOODS_IN_SHOP = 15;
+    // максимально возможное количество товаров в магазине
+    private static final int MAX_FOODS_IN_SHOP = 15;
+    private static final int MAX_CLOTHES_IN_SHOP = 15;
+    private static final int MAX_BOOKS_IN_SHOP = 15;
 
-
+    private static final int MAX_FOODS_FOR_MAN = 5;
+    private static final int MAX_CLOTHES_FOR_MAN = 5;
+    private static final int MAX_BOOKS_FOR_MAN = 5;
 
     public static void main(String[] args) {
-        formOfShopList();
-    }
+        // формируем список товаров в магазине
+        System.out.println("Магазин");
+        FormerList.formOfGoodsList(Shop.goodsOfShop,
+                (int)(Math.random() * MAX_FOODS_IN_SHOP),
+                (int)(Math.random() * MAX_CLOTHES_IN_SHOP),
+                (int)(Math.random() * MAX_BOOKS_IN_SHOP));
 
-    // формирование списка товаров в магазине
-    public static void formOfShopList() {
-        Good[] arrOfGoods = new Food[QUANTITY_OF_GOODS_IN_SHOP];
-        FoodFormer.arrOfFoodFormer((Food[]) arrOfGoods);
-        Shop.goodsOfShop = Arrays.asList(arrOfGoods);
 
-        arrOfGoods = new Clothes[QUANTITY_OF_GOODS_IN_SHOP];
-
-//        ClothesFormer.arrOfClothesFormer((Clothes[]) arrOfGoods);
-//        Shop.goodsOfShop = Arrays.asList(arrOfGoods);
-//        for (Good good : arrOfGoods){
-//            System.out.println(good.toString());
-//        }
+        Man[] buyers = new Man[5];
+        for (Man man : buyers){
+            System.out.println("чел");
+            FormerList.formOfGoodsList(man.goodsOfMan,
+                    (int)(Math.random() * MAX_FOODS_FOR_MAN),
+                    (int)(Math.random() * MAX_CLOTHES_FOR_MAN),
+                    (int)(Math.random() * MAX_BOOKS_FOR_MAN));
+        }
     }
 }
