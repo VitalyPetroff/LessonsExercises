@@ -22,7 +22,7 @@ public class Man {
         return str;
     }
 
-    public consumeAll(){
+    public void consumeAll(){
 
     }
 
