@@ -8,7 +8,7 @@ public class Book extends Good {
         this.priceOfGood = priceOfGood;
     }
 
-    public void consume(){
+    public void consume() {
         ownerOfGood.intellect += factorOfGood;
     }
 }

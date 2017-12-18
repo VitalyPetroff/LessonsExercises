@@ -9,7 +9,7 @@ public abstract class Good {
     protected Man ownerOfGood;
     protected int factorOfGood;
 
-    protected Good(String nameofGood){
+    protected Good(String nameofGood) {
         this.nameOfGood = nameofGood;
     }
 
@@ -20,13 +20,13 @@ public abstract class Good {
     }
 
 
-    public String toString(){
-        String str ="Name = " + nameOfGood + " price = " + priceOfGood + " factor = " + factorOfGood;
+    public String toString() {
+        String str = "Name = " + nameOfGood + " price = " + priceOfGood + " factor = " + factorOfGood;
         return str;
     }
 
-    public boolean equals(Good good){
-        if (this.nameOfGood.equals(good.nameOfGood)){
+    public boolean equals(Good good) {
+        if (this.nameOfGood.equals(good.nameOfGood)) {
             return true;
         } else {
             return false;

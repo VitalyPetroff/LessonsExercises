@@ -15,7 +15,7 @@ public class Man {
     public List<Good> wishGoods = new ArrayList<>();
     public List<Good> purchasedGoods = new ArrayList<>();
 
-    public String toString(){
+    public String toString() {
         String str = "Имя: " + name +
                 ". Сила: " + force +
                 ". Интеллект: " + intellect +
@@ -24,8 +24,8 @@ public class Man {
         return str;
     }
 
-    public void consumeAll(){
-        for (Good good : purchasedGoods){
+    public void consumeAll() {
+        for (Good good : purchasedGoods) {
             good.consume();
         }
     }
