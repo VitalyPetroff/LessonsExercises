@@ -5,9 +5,9 @@ import TotalPackage.shop.*;
 public class Application {
 
     // максимально возможное количество товаров в магазине
-    private static final int MAX_FOODS_IN_SHOP = 10;
-    private static final int MAX_CLOTHES_IN_SHOP = 10;
-    private static final int MAX_BOOKS_IN_SHOP = 10;
+    private static final int MAX_FOODS_IN_SHOP = 12;
+    private static final int MAX_CLOTHES_IN_SHOP = 12;
+    private static final int MAX_BOOKS_IN_SHOP = 12;
 
     private static final int QUANTITY_OF_BUYERS = 5; // количество покупателей
     // максимально возможное количество товаров в списке желаний покупателя

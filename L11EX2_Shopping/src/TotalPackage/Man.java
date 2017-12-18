@@ -11,7 +11,7 @@ public class Man {
     public int force = 1;
     public int charisma = 1;
     public int intellect = 1;
-    public float money = 12f;
+    public float money = 10f;
     public List<Good> wishGoods = new ArrayList<>();
     public List<Good> purchasedGoods = new ArrayList<>();
 
