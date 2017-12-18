@@ -16,19 +16,33 @@ public class Application {
     private static final int MAX_BOOKS_FOR_MAN = 5;
 
     public static void main(String[] args) {
-        // формируем список товаров в магазине
+
+        formShopList(); // формируем список товаров в магазине
+
+        // создаём покупателей
+        Man[] buyers = new Man[QUANTITY_OF_BUYERS];
+        for (int i = 0; i < QUANTITY_OF_BUYERS; i++) {
+            buyers[i] = new Man();
+        }
+
+        formBuyersWishLists(buyers); // формируем списки желаемых товаров у каждого покупателя
+        shoppingOfBuyers(buyers); // покупка товаров каждым покупателем
+        printInfo(buyers);  // вывод инфы о покупателях
+        consumeOfAllBuyers(buyers); // использование товаров
+        System.out.println("\nПОСЛЕ ИСПОЛЬЗОВАНИЯ КУПЛЕННЫХ ТОВАРОВ:");
+        printInfo(buyers);  // вывод инфы о покупателях
+    }
+
+    public static void formShopList() {
         Shop.goodsOfShop = ListOfGoods.formList(Shop.goodsOfShop,
                 MAX_FOODS_IN_SHOP,
                 MAX_CLOTHES_IN_SHOP,
                 MAX_BOOKS_IN_SHOP);
 //        System.out.println("В МАГАЗИНЕ ЕСТЬ:");
 //        ListOfGoods.printList(Shop.goodsOfShop);
+    }
 
-        // формируем списки желаемых товаров у каждого покупателя
-        Man[] buyers = new Man[QUANTITY_OF_BUYERS];
-        for (int i = 0; i < QUANTITY_OF_BUYERS; i++) {
-            buyers[i] = new Man();
-        }
+    public static void formBuyersWishLists(Man[] buyers) {
         for (Man man : buyers) {
             man.wishGoods = ListOfGoods.formList(man.wishGoods,
                     (int) (Math.random() * MAX_FOODS_FOR_MAN),
@@ -37,8 +51,9 @@ public class Application {
 //            System.out.println("ПОКУПАТЕЛЬ ЖЕЛАЕТ:");
 //            ListOfGoods.printList(man.wishGoods);
         }
+    }
 
-        // покупка товаров каждым покупателем
+    public static void shoppingOfBuyers(Man[] buyers) {
         int numberOfbuyer = 1;
         for (Man buyer : buyers) {
             System.out.println("В МАГАЗИН ЗАШЕЛ ПОКУПАТЕЛЬ №" + numberOfbuyer);
@@ -56,16 +71,18 @@ public class Application {
             System.out.println(message);
             numberOfbuyer++;
         }
+    }
 
+    public static void printInfo(Man[] buyers) {
         System.out.println("ИНФА О ПОКУПАТЕЛЯХ:");
-        for (Man buyer : buyers){
+        for (Man buyer : buyers) {
             System.out.println(buyer.toString());
         }
+    }
 
-        System.out.println("\nПОСЛЕ ИСПОЛЗОВАНИЯ КУПЛЕННЫХ ТОВАРОВ:");
-        for(Man buyer : buyers){
+    public static void consumeOfAllBuyers(Man[] buyers){
+        for (Man buyer : buyers) {
             buyer.consumeAll();
-            System.out.println(buyer.toString());
         }
     }
 }
