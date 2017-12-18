@@ -8,14 +8,24 @@ public class Shop {
 
     public static List<Good> goodsOfShop;
 
-    public static void shopping(Man buyer, Good nameOfGoods) throws IllegalArgumentException, IllegalStateException{
-        if (buyer.getMoney() < nameOfGoods.getPriceOfGood()){
-            throw new IllegalArgumentException("На покупку товара не хватает денег!");
+    public static void shopping(Man buyer, Good wishGood) {
+        for (Good good : goodsOfShop) {
+            if (good.equals(wishGood)) {
+                if (buyer.getMoney() > wishGood.getPriceOfGood()) {
+                    buyer.purchasedGoods.add(wishGood);
+                    buyer.money -= wishGood.priceOfGood;
+                    Shop.goodsOfShop.remove(good);
+                    return;
+                } else {
+                    throw new IllegalArgumentException("НА ПОКУПКУ ТОВАРА "
+                            + wishGood.toString() + " НЕ ХВАТАЕТ ДЕНЕГ!");
+                }
+            }
         }
-        if (!goodsOfShop.contains(nameOfGoods)){
-            throw new IllegalStateException("Данный товар в магазине закончился!");
-        }
-        buyer.purchasedGoods.add(nameOfGoods);
-        goodsOfShop.remove(nameOfGoods);
+        throw new IllegalStateException("ТОВАР "
+                + wishGood.toString() + "  В МАГАЗИНЕ ЗАКОНЧИЛСЯ!");
     }
 }
+
+
+

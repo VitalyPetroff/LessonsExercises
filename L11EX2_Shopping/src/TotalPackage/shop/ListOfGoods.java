@@ -1,9 +1,10 @@
 package TotalPackage.shop;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ListOfGoodsFormer {
+public class ListOfGoods {
 
     public static List<Good> formList(List<Good> listOfGoods,
                                        int quantityOfFoods,
@@ -11,17 +12,17 @@ public class ListOfGoodsFormer {
                                        int quantityOfBooks) {
         Good[] arrOfFoods = new Food[quantityOfFoods]; // массив с продуктами питания
         for (int i = 0; i < quantityOfFoods; i++){
-             arrOfFoods[i] = GoodsFormer.foodFormer((Food) arrOfFoods[i]);
+             arrOfFoods[i] = GoodsCreator.createFood();
         }
 
         Good[] arrOfClothes = new Clothes[quantityOfClothes]; // массив с одеждой
         for (int i = 0; i < quantityOfClothes; i++){
-            arrOfClothes[i] = GoodsFormer.clothesFormer((Clothes) arrOfClothes[i]);
+            arrOfClothes[i] = GoodsCreator.createClothes();
         }
 
         Good[] arrOfBooks = new Book[quantityOfBooks]; // массив с книгами
         for (int i = 0; i < quantityOfBooks; i++){
-            arrOfBooks[i] = GoodsFormer.bookFormer((Book) arrOfBooks[i]);
+            arrOfBooks[i] = GoodsCreator.createBook();
         }
 
         // массив всех товаров
@@ -36,7 +37,7 @@ public class ListOfGoodsFormer {
             arrOfGoods[i + quantityOfFoods + quantityOfClothes] = arrOfBooks[i];
         }
 
-        listOfGoods = Arrays.asList(arrOfGoods); // список товаров
+        listOfGoods = new ArrayList<>(Arrays.asList(arrOfGoods)); // список товаров
         return listOfGoods;
     }
 

@@ -24,4 +24,12 @@ public abstract class Good {
         String str ="Name = " + nameOfGood + " price = " + priceOfGood + " factor = " + factorOfGood;
         return str;
     }
+
+    public boolean equals(Good good){
+        if (this.nameOfGood.equals(good.nameOfGood)){
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

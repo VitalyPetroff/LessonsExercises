@@ -1,6 +1,6 @@
 package TotalPackage.shop;
 
-public class GoodsFormer {
+public class GoodsCreator {
 
     private static final String[] LIST_OF_FOOD = {"BANANA", "PINEAPPLE", "APPLE", "TOMATO", "VINOGRAD"};
     private static final float[] PRICE_OF_FOOD = {1.1f, 2.0f, 0.7f, 1.0f, 0.9f};
@@ -14,21 +14,18 @@ public class GoodsFormer {
     private static final int[] FACTOR_OF_BOOK = {1, 2, 3, 4};
     private static final float[] PRICE_OF_BOOK = {0.3f, 2.0f, 2.5f, 3.0f};
 
-    public static Food foodFormer(Food food){
-            int type = (int)(Math.random() * 4);
-            food = new Food(LIST_OF_FOOD[type], FACTOR_OF_FOOD[type], PRICE_OF_FOOD[type]);
-            return food;
+    public static Food createFood() {
+        int type = (int) (Math.random() * 4);
+        return new Food(LIST_OF_FOOD[type], FACTOR_OF_FOOD[type], PRICE_OF_FOOD[type]);
     }
 
-    public static Clothes clothesFormer(Clothes clothes){
-        int type = (int)(Math.random() * 4);
-        clothes = new Clothes(LIST_OF_CLOTHES[type], FACTOR_OF_CLOTHES[type], PRICE_OF_CLOTHES[type]);
-        return clothes;
+    public static Clothes createClothes() {
+        int type = (int) (Math.random() * 4);
+        return new Clothes(LIST_OF_CLOTHES[type], FACTOR_OF_CLOTHES[type], PRICE_OF_CLOTHES[type]);
     }
 
-    public static Book bookFormer(Book book){
-        int type = (int)(Math.random() * 4);
-        book = new Book(LIST_OF_BOOK[type], FACTOR_OF_BOOK[type], PRICE_OF_BOOK[type]);
-        return book;
+    public static Book createBook() {
+        int type = (int) (Math.random() * 4);
+        return new Book(LIST_OF_BOOK[type], FACTOR_OF_BOOK[type], PRICE_OF_BOOK[type]);
     }
 }

@@ -11,9 +11,9 @@ public class Man {
     private int force = 1;
     private int charisma = 1;
     private int intellect = 1;
-    private float money = 100;
-    public List<Good> wishGoods;
-    public List<Good> purchasedGoods;
+    public float money = 15f;
+    public List<Good> wishGoods = new ArrayList<>();
+    public List<Good> purchasedGoods = new ArrayList<>();
 
     public String toString(){
         String str = "Имя: " + name +
