@@ -13,7 +13,7 @@ public abstract class Good {
         this.nameOfGood = nameofGood;
     }
 
-//    public abstract void consume();
+    public abstract void consume();
 
     public float getPriceOfGood() {
         return priceOfGood;
@@ -32,6 +32,4 @@ public abstract class Good {
             return false;
         }
     }
-
-    public abstract void consume();
 }

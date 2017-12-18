@@ -29,6 +29,3 @@ public class Shop {
                 + wishGood.toString() + " в магазине закончился !");
     }
 }
-
-
-
