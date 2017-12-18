@@ -32,4 +32,6 @@ public abstract class Good {
             return false;
         }
     }
+
+    public abstract void consume();
 }

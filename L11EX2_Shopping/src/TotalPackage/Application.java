@@ -38,8 +38,10 @@ public class Application {
 //            ListOfGoods.printList(man.wishGoods);
         }
 
+        // покупка товаров каждым покупателем
         int numberOfbuyer = 1;
         for (Man buyer : buyers) {
+            System.out.println("В МАГАЗИН ЗАШЕЛ ПОКУПАТЕЛЬ №" + numberOfbuyer);
             for (Good good : buyer.wishGoods) {
                 try {
                     Shop.shopping(buyer, good);
@@ -47,13 +49,23 @@ public class Application {
                     System.out.println(ex.getMessage());
                 }
             }
-            String message = "В корзине у покупателя " + numberOfbuyer +
-                    " находится " + buyer.purchasedGoods.size() + " товар";
+            String message = "В КОРЗИНЕ У ПОКУПАТЕЛЯ №" + numberOfbuyer +
+                    " НАХОДИТСЯ " + buyer.purchasedGoods.size() + " ТОВАРА";
             System.out.println(message);
-            message = "В магазине осталось " + Shop.goodsOfShop.size() + " товар" + "\n";
+            message = "В МАГАЗИНЕ ОСТАЛОСЬ " + Shop.goodsOfShop.size() + " ТОВАРОВ" + "\n";
             System.out.println(message);
             numberOfbuyer++;
         }
 
+        System.out.println("ИНФА О ПОКУПАТЕЛЯХ:");
+        for (Man buyer : buyers){
+            System.out.println(buyer.toString());
+        }
+
+        System.out.println("\nПОСЛЕ ИСПОЛЗОВАНИЯ КУПЛЕННЫХ ТОВАРОВ:");
+        for(Man buyer : buyers){
+            buyer.consumeAll();
+            System.out.println(buyer.toString());
+        }
     }
 }

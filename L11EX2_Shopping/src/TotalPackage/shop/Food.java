@@ -8,7 +8,7 @@ public class Food extends Good {
         this.priceOfGood = priceOfGood;
     }
 
-//    public void consume(){
-//        ownerOfGood.setForce(ownerOfGood.getForce() + factorOfGood);
-//    }
+    public void consume(){
+        ownerOfGood.force += factorOfGood;
+    }
 }

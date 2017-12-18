@@ -12,18 +12,21 @@ public class Shop {
         for (Good good : goodsOfShop) {
             if (good.equals(wishGood)) {
                 if (buyer.getMoney() > wishGood.getPriceOfGood()) {
-                    buyer.purchasedGoods.add(wishGood);
                     buyer.money -= wishGood.priceOfGood;
+                    wishGood.ownerOfGood = buyer;
+                    buyer.purchasedGoods.add(wishGood);
+
+
                     Shop.goodsOfShop.remove(good);
                     return;
                 } else {
-                    throw new IllegalArgumentException("НА ПОКУПКУ ТОВАРА "
-                            + wishGood.toString() + " НЕ ХВАТАЕТ ДЕНЕГ!");
+                    throw new IllegalArgumentException("На покупку товара "
+                            + wishGood.toString() + " не хватает денег!");
                 }
             }
         }
-        throw new IllegalStateException("ТОВАР "
-                + wishGood.toString() + "  В МАГАЗИНЕ ЗАКОНЧИЛСЯ!");
+        throw new IllegalStateException("Товар "
+                + wishGood.toString() + " в магазине закончился !");
     }
 }
 

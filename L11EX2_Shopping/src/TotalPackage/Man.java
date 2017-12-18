@@ -7,11 +7,11 @@ import java.util.List;
 
 public class Man {
 
-    private String name = "Петров";
-    private int force = 1;
-    private int charisma = 1;
-    private int intellect = 1;
-    public float money = 15f;
+    public String name = "Петров";
+    public int force = 1;
+    public int charisma = 1;
+    public int intellect = 1;
+    public float money = 12f;
     public List<Good> wishGoods = new ArrayList<>();
     public List<Good> purchasedGoods = new ArrayList<>();
 
@@ -24,41 +24,11 @@ public class Man {
         return str;
     }
 
-//    public void consumeAll(){
-//
-//    }
-//
-//    public int getForce(){
-//        return force;
-//    }
-//
-//    public void setForce(int force) {
-//        this.force = force;
-//    }
-//
-//    public String getName() {
-//        return name;
-//    }
-//
-//    public void setName(String name) {
-//        this.name = name;
-//    }
-//
-//    public int getCharisma() {
-//        return charisma;
-//    }
-//
-//    public void setCharisma(int charisma) {
-//        this.charisma = charisma;
-//    }
-//
-//    public int getIntellect() {
-//        return intellect;
-//    }
-//
-//    public void setIntellect(int intellect) {
-//        this.intellect = intellect;
-//    }
+    public void consumeAll(){
+        for (Good good : purchasedGoods){
+            good.consume();
+        }
+    }
 
     public float getMoney() {
         return money;

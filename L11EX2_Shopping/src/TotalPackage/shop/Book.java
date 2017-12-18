@@ -8,14 +8,7 @@ public class Book extends Good {
         this.priceOfGood = priceOfGood;
     }
 
-//    public static void arrOfBookFormer(Book[] arrOfGoods){
-//        for (int i = 0; i < arrOfGoods.length; i++){
-//            int type = (int)(Math.random() * 4);
-//            arrOfGoods[i] = new Book(LIST_OF_BOOKS[type], FACTOR_OF_BOOKS[type], PRICE_OF_BOOKS[type]);
-//        }
-//    }
-
-//    public void consume(){
-//        ownerOfGood.setIntellect(ownerOfGood.getIntellect() + factorOfGood);
-//    }
+    public void consume(){
+        ownerOfGood.intellect += factorOfGood;
+    }
 }
