@@ -28,7 +28,7 @@ public class PersonUtils{
             System.out.println(man.getName() + " - " + age + " лет");
         }
         if (SUSPECTS.size() > 3){
-            throw new ThereIsAProblemException("НЕСАНЦИОНИРОВАННЫЙ МИТИНГ !!!");
+            throw new ThereIsAProblemException("НЕСАНКЦИОНИРОВАННЫЙ МИТИНГ !!!");
         }
     }
 }
