@@ -82,7 +82,7 @@ public class Application {
 
     public static void consumeOfAllBuyers(Man[] buyers) {
         for (Man buyer : buyers) {
-            buyer.consumeAll();`
+            buyer.consumeAll();
         }
     }
 }
