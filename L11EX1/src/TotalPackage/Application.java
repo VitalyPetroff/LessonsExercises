@@ -25,5 +25,4 @@ public class Application {
         chijovkaArena.makeSomeNoise(band);
         minskArena.teamPlay(firstTeam, secondTeam);
     }
-
 }
