@@ -4,6 +4,8 @@ import TotalPackage.Ground.Arena;
 import TotalPackage.Ground.Pub;
 import TotalPackage.Ground.Stadium;
 import TotalPackage.Tenant.Music.Band;
+import TotalPackage.Tenant.Music.EventPlayGround;
+import TotalPackage.Tenant.Sport.SportPlayGround;
 import TotalPackage.Tenant.Sport.Team;
 
 public class Application {
@@ -12,14 +14,15 @@ public class Application {
         Band band = new Band("\"Макс Корж\"", 2);
         Team firstTeam = new Team("\"БАТЭ\"", 1);
         Team secondTeam = new Team("\"Динамо\"", 2);
-        Pub underGround = new Pub("\"Подземка\"", 7);
-        Stadium borisovArena = new Stadium("\"Борисов-Арена\"");
-        Arena minskArena = new Arena("\"Минск Арена\"");
+        EventPlayGround underGround = new Pub("\"Подземка\"", 7);
+        SportPlayGround borisovArena = new Stadium("\"Борисов-Арена\"");
+        SportPlayGround minskArena = new Arena("\"Минск Арена\"");
+        EventPlayGround chijovkaArena = new Arena("\"Чижовка-Арена\"");
 
 
         underGround.makeSomeNoise(band);
         borisovArena.teamPlay(secondTeam, firstTeam);
-        minskArena.makeSomeNoise(band);
+        chijovkaArena.makeSomeNoise(band);
         minskArena.teamPlay(firstTeam, secondTeam);
     }
 
