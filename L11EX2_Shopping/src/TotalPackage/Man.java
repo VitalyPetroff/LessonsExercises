@@ -28,6 +28,7 @@ public class Man {
         for (Good good : purchasedGoods) {
             good.consume();
         }
+        purchasedGoods.clear();
     }
 
     public float getMoney() {
