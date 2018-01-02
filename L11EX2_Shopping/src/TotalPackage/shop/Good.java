@@ -19,7 +19,6 @@ public abstract class Good {
         return priceOfGood;
     }
 
-
     public String toString() {
         String str = "Name = " + nameOfGood + " price = " + priceOfGood + " factor = " + factorOfGood;
         return str;

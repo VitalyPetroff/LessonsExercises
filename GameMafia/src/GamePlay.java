@@ -10,7 +10,6 @@ public class GamePlay {
         Scanner scan = new Scanner(System.in);
         Set<Person> players = new HashSet<>();
 
-        gameInitialization(players);
         boolean gameStatus;
         while (true) {
             night(players);
