@@ -3,7 +3,8 @@ import static spark.Spark.post;
 
 public class Main {
     public static void main(String[] args) {
-        get("/simpleGet", (request, responce) -> "Request");
-        post("/simplePost", (request, responce) -> "PostRequestHaHa");
+        Model model = new Model();
+        get("/view", (request, response) -> model.getMessage());
+        post("/addMessage", (request, response) -> model.addMessage(request.body()));
     }
 }
