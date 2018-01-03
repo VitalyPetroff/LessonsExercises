@@ -20,7 +20,11 @@ public class Model implements Serializable {
     }
 
     public String addMessage(String message) {
+//        try {
         messages.add(message);
+//        } catch (Exception e) {
+//            LOGGER.error(e.getMessage(), e);
+//        }
         serialize();
         return "Success";
     }
