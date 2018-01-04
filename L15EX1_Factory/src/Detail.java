@@ -1,16 +1,18 @@
-public abstract class Detail {
+public class Detail {
 
     private String nameOfDetaiil; // название детали
     private int valueOfMaterial; // стоимость материалов
     private int valueOfMaking;  // стоимость работ
     private int income;     // прибыль от продажи
 
-    @Override
-    public String toString() {
-        System.out.println("Название детали: " + nameOfDetaiil +
+    public void printDetailInfo() {
+        String str = "Название детали: " + nameOfDetaiil +
                 " стоимость материалов: " + valueOfMaterial +
-                " стоимость работ :" + valueOfMaking);
+                " стоимость работ :" + valueOfMaking;
+        System.out.println(str);
     }
 
-    public abstract int detailMaking();
+    public int detailMaking(Stock stock){
+
+    }
 }

@@ -2,11 +2,11 @@ public class Cell {
     private String nameOfAnimal;
     private boolean wasteContent = false;
 
-    public void cellFilling(){
+    public void Filling(){
         wasteContent = true;
     }
 
-    public void cellCleaning(){
+    public void Cleaning(){
         wasteContent = false;
     }
 
