@@ -25,6 +25,13 @@ public class Controller {
         }
     }
 
+    public static String getGoodInfo(Shop shop, Integer id){
+        String idInfo = "ID:" + id;
+        String goodInfo = shop.mapOfGoods.get(id).toString();
+        String quantity = " Количество: " + shop.mapOfQuantity.get(id);
+        return (idInfo + goodInfo + quantity);
+    }
+
     public static void addNewAccount(Shop shop, String name) {
         boolean isShopContainAccount = false;
         // проверка наличия аккаунта в магазине
@@ -40,6 +47,12 @@ public class Controller {
             Integer quantityOfAccounts = shop.mapOfAccounts.size();
             shop.mapOfAccounts.put(quantityOfAccounts, new Account(name));
         }
+    }
+
+    public static String getAccountInfo(Shop shop, Integer id){
+        String idInfo = "ID:" + id;
+        String accountInfo = shop.mapOfAccounts.get(id).toString();
+        return (idInfo + accountInfo);
     }
 
     public static void addToCart(Shop shop, Integer accountId, Integer goodId, Integer quantityOfGood) {
@@ -60,16 +73,5 @@ public class Controller {
         shop.mapOfAccounts.get(accountId).cartOfAccount.mapOfCart.clear();
     }
 
-    public static String getGoodInfo(Shop shop, Integer id){
-        String idInfo = "ID:" + id;
-        String goodInfo = shop.mapOfGoods.get(id).toString();
-        String quantity = " Количество: " + shop.mapOfQuantity.get(id);
-        return (idInfo + goodInfo + quantity);
-    }
 
-    public static String getAccountInfo(Shop shop, Integer id){
-        String idInfo = "ID:" + id;
-        String accountInfo = shop.mapOfAccounts.get(id).toString();
-        return (idInfo + accountInfo);
-    }
 }
