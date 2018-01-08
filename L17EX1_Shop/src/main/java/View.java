@@ -1,28 +1,17 @@
 import Model.Account;
 import Model.CartOfAccount;
-import Model.Good;
 import Model.Shop;
+
+import java.util.Map;
 
 public class View {
 
-    public static void printGoodInfo(Good good) {
-        System.out.println(good.toString());
+    public static void printGoodInfo(String goodInfo){
+        System.out.println(goodInfo);
     }
 
-    public static void printAccountInfo(Account account){
-        System.out.println(account.toString());
-    }
-
-    public static void printGoodsId(Shop shop) {
-        for (Integer id : shop.mapOfQuantity.keySet()) {
-            System.out.println(id + " кол-во: " + shop.mapOfQuantity.get(id));
-        }
-    }
-
-    public static void printAccountsId(Shop shop) {
-        for (Integer id : shop.mapOfAccounts.keySet()) {
-            System.out.println(id + " Имя аккаунта: " + shop.mapOfAccounts.get(id).nameOfAccount);
-        }
+    public static void printAccountInfo(String accountInfo){
+        System.out.println(accountInfo);
     }
 
     public static void printGoodsInCart(Shop shop, Integer accountId) {

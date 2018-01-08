@@ -11,7 +11,7 @@ public class Account {
 
     @Override
     public String toString() {
-        String str = " имя аккаунта: " + nameOfAccount;
+        String str = " Имя аккаунта: " + nameOfAccount;
         return str;
     }
 }

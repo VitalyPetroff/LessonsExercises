@@ -11,17 +11,17 @@ public class Controller {
         for (Integer id : shop.mapOfGoods.keySet()) {
             Good good = shop.mapOfGoods.get(id);
             if (good.nameOfGood.equals(name)) {
-                Integer quantityOfGood = shop.mapOfQuantity.get(id);
-                shop.mapOfQuantity.put(id, quantityOfGood + numOfGood);
+                Integer quantity = shop.mapOfQuantity.get(id);
+                shop.mapOfQuantity.put(id, quantity + numOfGood);
                 isShopContainsGood = true;
                 break;
             }
         }
         // создание нового товара, если товар не найден
         if (!isShopContainsGood) {
-            Integer goodId = shop.mapOfGoods.size();
-            shop.mapOfGoods.put(goodId, new Good(name, price));
-            shop.mapOfQuantity.put(goodId, numOfGood);
+            Integer id = shop.mapOfGoods.size();
+            shop.mapOfGoods.put(id, new Good(name, price));
+            shop.mapOfQuantity.put(id, numOfGood);
         }
     }
 
@@ -60,11 +60,16 @@ public class Controller {
         shop.mapOfAccounts.get(accountId).cartOfAccount.mapOfCart.clear();
     }
 
-    public static Good getGoodInfo(Shop shop, Integer id) {
-        return shop.mapOfGoods.get(id);
+    public static String getGoodInfo(Shop shop, Integer id){
+        String idInfo = "ID:" + id;
+        String goodInfo = shop.mapOfGoods.get(id).toString();
+        String quantity = " Количество: " + shop.mapOfQuantity.get(id);
+        return (idInfo + goodInfo + quantity);
     }
 
-    public static Account getAccountInfo(Shop shop, Integer id) {
-        return shop.mapOfAccounts.get(id);
+    public static String getAccountInfo(Shop shop, Integer id){
+        String idInfo = "ID:" + id;
+        String accountInfo = shop.mapOfAccounts.get(id).toString();
+        return (idInfo + accountInfo);
     }
 }

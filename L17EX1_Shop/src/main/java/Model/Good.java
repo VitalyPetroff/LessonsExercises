@@ -12,7 +12,7 @@ public class Good {
 
     @Override
     public String toString() {
-        String str = " наименование: " + nameOfGood + " цена: " + priceOfGood;
+        String str = " Наим.: " + nameOfGood + " Цена: " + priceOfGood;
         return str;
     }
 }
