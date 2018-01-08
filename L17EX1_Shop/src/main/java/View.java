@@ -1,7 +1,17 @@
+import Model.Account;
 import Model.CartOfAccount;
+import Model.Good;
 import Model.Shop;
 
 public class View {
+
+    public static void printGoodInfo(Good good) {
+        System.out.println(good.toString());
+    }
+
+    public static void printAccountInfo(Account account){
+        System.out.println(account.toString());
+    }
 
     public static void printGoodsId(Shop shop) {
         for (Integer id : shop.mapOfQuantity.keySet()) {

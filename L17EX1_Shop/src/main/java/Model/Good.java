@@ -9,4 +9,10 @@ public class Good {
         this.nameOfGood = nameOfGood;
         this.priceOfGood = priceOfGood;
     }
+
+    @Override
+    public String toString() {
+        String str = " наименование: " + nameOfGood + " цена: " + priceOfGood;
+        return str;
+    }
 }

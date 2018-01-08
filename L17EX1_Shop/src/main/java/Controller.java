@@ -1,25 +1,33 @@
 import Model.Account;
 import Model.CartOfAccount;
+import Model.Good;
 import Model.Shop;
 
 public class Controller {
 
-    public static void addGoodToShop(Shop shop, int goodId, int numOfGood) {
-        Integer quantityInShop = shop.mapOfQuantity.get(goodId);
-        if (quantityInShop == null) {
+    public static void addGoodToShop(Shop shop, String name, int price, int numOfGood) {
+        boolean isShopContainsGood = false;
+        // поиск товара в магазине
+        for (Integer id : shop.mapOfGoods.keySet()) {
+            Good good = shop.mapOfGoods.get(id);
+            if (good.nameOfGood.equals(name)) {
+                Integer quantityOfGood = shop.mapOfQuantity.get(id);
+                shop.mapOfQuantity.put(id, quantityOfGood + numOfGood);
+                isShopContainsGood = true;
+                break;
+            }
+        }
+        // создание нового товара, если товар не найден
+        if (!isShopContainsGood) {
+            Integer goodId = shop.mapOfGoods.size();
+            shop.mapOfGoods.put(goodId, new Good(name, price));
             shop.mapOfQuantity.put(goodId, numOfGood);
-        } else {
-            shop.mapOfQuantity.put(goodId, (quantityInShop + numOfGood));
         }
     }
 
     public static void addNewAccount(Shop shop, String nameOfAccount) {
-        Integer quantityOfAccounts = shop.mapOfAccounts.size();
-        if (quantityOfAccounts == 0) {
-            shop.mapOfAccounts.put(quantityOfAccounts, new Account(nameOfAccount));
-        } else {
-            shop.mapOfAccounts.put(quantityOfAccounts + 1, new Account(nameOfAccount));
-        }
+        boolean isShopContainAccaount = false;
+        for ()
     }
 
     public static void addToCart(Shop shop, Integer accountId, Integer goodId, Integer quantityOfGood) {
@@ -38,5 +46,13 @@ public class Controller {
 
     public static void buyCart(Shop shop, Integer accountId) {
         shop.mapOfAccounts.get(accountId).cartOfAccount.mapOfCart.clear();
+    }
+
+    public static Good getGoodInfo(Shop shop, Integer id){
+        return shop.mapOfGoods.get(id);
+    }
+
+    public static Account getAccountInfo(Shop shop, Integer id){
+        return shop.mapOfAccounts.get(id);
     }
 }

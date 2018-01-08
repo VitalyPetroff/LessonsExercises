@@ -1,27 +1,28 @@
-import Model.Good;
 import Model.Shop;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class AppMain {
 
     public static void main(String[] args) {
 
-        Map<Integer, Good> mapOfGood = new HashMap<>(); // <ID, товар>
-        createMapOfGoods(mapOfGood);
-
         Shop shop = new Shop();
 
-        Controller.addGoodToShop(shop, 1, 6);
-        Controller.addGoodToShop(shop, 2, 6);
-        Controller.addGoodToShop(shop, 3, 2);
+        View.printGoodInfo(Controller.getGoodInfo(shop, 2));
+
+
+        Controller.addGoodToShop(shop, "Одежда", 20, 10);
+        Controller.addGoodToShop(shop, "Игрушки", 15, 6);
+        Controller.addGoodToShop(shop, "Еда", 5, 20);
+        Controller.addGoodToShop(shop, "Телефон", 50, 5);
+        Controller.addGoodToShop(shop, "Ноутбук", 100, 5);
         View.printGoodsId(shop);
 
         Controller.addNewAccount(shop, "Вася");
         Controller.addNewAccount(shop, "Петя");
         Controller.addNewAccount(shop, "Коля");
-        View.printAccountsId(shop);
+
+        for (Integer id = 0; id < 3; id++) {
+            View.printAccountInfo(Controller.getAccountInfo(shop, id));
+        }
 
         Controller.addToCart(shop, 2, 1, 1);
         Controller.addToCart(shop, 2, 1, 3);
@@ -30,13 +31,6 @@ public class AppMain {
 
         Controller.buyCart(shop, 2);
         View.printGoodsInCart(shop, 2);
-    }
-
-    private static void createMapOfGoods(Map mapOfGoods) {
-        mapOfGoods.put(0, new Good("Одежда", 20));
-        mapOfGoods.put(1, new Good("Игрушки", 15));
-        mapOfGoods.put(2, new Good("Еда", 5));
-        mapOfGoods.put(3, new Good("Телефон", 50));
     }
 }
 
