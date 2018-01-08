@@ -25,9 +25,21 @@ public class Controller {
         }
     }
 
-    public static void addNewAccount(Shop shop, String nameOfAccount) {
-        boolean isShopContainAccaount = false;
-        for ()
+    public static void addNewAccount(Shop shop, String name) {
+        boolean isShopContainAccount = false;
+        // проверка наличия аккаунта в магазине
+        for (Integer id : shop.mapOfAccounts.keySet()) {
+            if (shop.mapOfAccounts.get(id).nameOfAccount.equals(name)){
+                System.out.println("Error");
+                isShopContainAccount = true;
+                break;
+            }
+        }
+        // добавление нового аккаунта
+        if (!isShopContainAccount){
+            Integer quantityOfAccounts = shop.mapOfAccounts.size();
+            shop.mapOfAccounts.put(quantityOfAccounts, new Account(name));
+        }
     }
 
     public static void addToCart(Shop shop, Integer accountId, Integer goodId, Integer quantityOfGood) {
@@ -48,11 +60,11 @@ public class Controller {
         shop.mapOfAccounts.get(accountId).cartOfAccount.mapOfCart.clear();
     }
 
-    public static Good getGoodInfo(Shop shop, Integer id){
+    public static Good getGoodInfo(Shop shop, Integer id) {
         return shop.mapOfGoods.get(id);
     }
 
-    public static Account getAccountInfo(Shop shop, Integer id){
+    public static Account getAccountInfo(Shop shop, Integer id) {
         return shop.mapOfAccounts.get(id);
     }
 }
