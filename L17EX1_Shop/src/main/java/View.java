@@ -1,8 +1,5 @@
-import Model.Account;
 import Model.CartOfAccount;
 import Model.Shop;
-
-import java.util.Map;
 
 public class View {
 
@@ -14,15 +11,15 @@ public class View {
         System.out.println(accountInfo);
     }
 
-    public static void printGoodsInCart(Shop shop, Integer accountId) {
+    public static void printCartInfo(Shop shop, Integer accountId) {
         CartOfAccount cart = shop.mapOfAccounts.get(accountId).cartOfAccount;
-        int quantityGoodsInCart = shop.mapOfAccounts.get(accountId).cartOfAccount.mapOfCart.size();
+        int quantityGoodsInCart = shop.mapOfAccounts.get(accountId).cartOfAccount.mapOfQuantity.size();
         if (quantityGoodsInCart > 0) {
-            for (Integer goodId : cart.mapOfCart.keySet()) {
-                System.out.println("ID товара: " + goodId + " кол-во в корзине: " + cart.mapOfCart.get(goodId));
+            for (Integer goodId : cart.mapOfQuantity.keySet()) {
+                System.out.println("ID: " + goodId + " кол-во в корзине: " + cart.mapOfQuantity.get(goodId));
             }
         } else {
-            System.out.println("Корзина данного аккаунта пуста");
+            System.out.println("Корзина аккаунта " + accountId + " пуста");
         }
     }
 }
