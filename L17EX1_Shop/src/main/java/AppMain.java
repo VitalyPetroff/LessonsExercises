@@ -6,7 +6,7 @@ public class AppMain {
 
     public static void main(String[] args) {
 
-        Shop shop = new Shop();
+        Shop shop = Controller.readShop();
 
         get("/addGoodToShop", (request, response) -> {
             String nameOfGood = request.queryParams("nameOfGood");

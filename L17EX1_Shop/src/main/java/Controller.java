@@ -2,8 +2,34 @@ import Model.Account;
 import Model.CartOfAccount;
 import Model.Good;
 import Model.Shop;
+import org.slf4j.LoggerFactory;
 
-public class Controller {
+import java.io.*;
+
+public class Controller implements Serializable {
+    public static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(Shop.class);
+
+    public static Shop readShop(){
+        try {
+            FileInputStream fis = new FileInputStream("data.txt");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            return (Shop) ois.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            return new Shop();
+        }
+    }
+
+    public void serialize(Shop shop){
+        try {
+            FileOutputStream fos = new FileOutputStream("data.txt");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(shop);
+            oos.flush();
+            oos.close();
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage(), e);
+        }
+    }
 
     public static Integer addGoodToShop(Shop shop, String name, int price, int numOfGood) {
         boolean isShopContainsGood = false;
