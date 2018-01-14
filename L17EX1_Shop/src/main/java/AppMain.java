@@ -13,8 +13,10 @@ public class AppMain {
             Integer priceOfGood = Integer.parseInt(request.queryParams("priceOfGood"));
             Integer numberOfGood = Integer.parseInt(request.queryParams("numberOfGood"));
             Integer goodId = Controller.addGoodToShop(shop, nameOfGood, priceOfGood, numberOfGood);
+            View.printGoodInfo(Controller.getGoodInfo(shop, goodId));
             return Controller.getGoodInfo(shop, goodId);
         });
+
 /*
          /addGoodToShop?nameOfGood="Игрушки"&priceOfGood=15&numberOfGood=6
                         nameOfGood="Одежда"&priceOfGood=20&numberOfGood=10
@@ -25,6 +27,7 @@ public class AppMain {
         get("/addNewAccount", ((request, response) -> {
             String nameOfAccount = request.queryParams("nameOfAccount");
             Integer accountId = Controller.addNewAccount(shop, nameOfAccount);
+            View.printAccountInfo(Controller.getAccountInfo(shop, accountId));
             return Controller.getAccountInfo(shop, accountId);
         }));
 /*
@@ -37,7 +40,8 @@ public class AppMain {
             Integer goodId = Integer.parseInt(request.queryParams("goodId"));
             Integer quantity = Integer.parseInt(request.queryParams("quantity"));
             Controller.addToCart(shop, accountId, goodId, quantity);
-            return "ОК";
+            View.printCartInfo(shop, accountId);
+            return Controller.getGoodInfo(shop, goodId);
         }));
 /*
         /addToCart?accountId=0&goodId=0&quantity=10

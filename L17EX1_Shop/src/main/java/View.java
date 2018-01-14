@@ -16,7 +16,9 @@ public class View {
         int quantityGoodsInCart = shop.mapOfAccounts.get(accountId).cartOfAccount.mapOfQuantity.size();
         if (quantityGoodsInCart > 0) {
             for (Integer goodId : cart.mapOfQuantity.keySet()) {
-                System.out.println("ID: " + goodId + " кол-во в корзине: " + cart.mapOfQuantity.get(goodId));
+                System.out.println("ID: " + goodId +
+                        " кол-во в корзине: " + cart.mapOfQuantity.get(goodId) +
+                        " цена: " + cart.mapOfPrice.get(goodId));
             }
         } else {
             System.out.println("Корзина аккаунта " + accountId + " пуста");
