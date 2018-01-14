@@ -6,15 +6,15 @@ public class AppMain {
 
     public static void main(String[] args) {
 
-        Shop shop = Controller.readShop();
+        Shop shop = shopService.readShop();
 
         get("/addGoodToShop", (request, response) -> {
             String nameOfGood = request.queryParams("nameOfGood");
             Integer priceOfGood = Integer.parseInt(request.queryParams("priceOfGood"));
             Integer numberOfGood = Integer.parseInt(request.queryParams("numberOfGood"));
-            Integer goodId = Controller.addGoodToShop(shop, nameOfGood, priceOfGood, numberOfGood);
-            View.printGoodInfo(Controller.getGoodInfo(shop, goodId));
-            return Controller.getGoodInfo(shop, goodId);
+            Integer goodId = shopService.addGoodToShop(shop, nameOfGood, priceOfGood, numberOfGood);
+            View.printGoodInfo(shopService.printGoodInfoInShop(shop, goodId));
+            return shopService.printGoodInfoInShop(shop, goodId);
         });
 
 /*
@@ -26,9 +26,9 @@ public class AppMain {
 */
         get("/addNewAccount", ((request, response) -> {
             String nameOfAccount = request.queryParams("nameOfAccount");
-            Integer accountId = Controller.addNewAccount(shop, nameOfAccount);
-            View.printAccountInfo(Controller.getAccountInfo(shop, accountId));
-            return Controller.getAccountInfo(shop, accountId);
+            Integer accountId = shopService.addNewAccount(shop, nameOfAccount);
+            View.printAccountInfo(shopService.getAccountInfo(shop, accountId));
+            return shopService.getAccountInfo(shop, accountId);
         }));
 /*
         /addNewAccount?nameOfAccount="Вася"
@@ -39,16 +39,16 @@ public class AppMain {
             Integer accountId = Integer.parseInt(request.queryParams("accountId"));
             Integer goodId = Integer.parseInt(request.queryParams("goodId"));
             Integer quantity = Integer.parseInt(request.queryParams("quantity"));
-            Controller.addToCart(shop, accountId, goodId, quantity);
+            shopService.addToCart(shop, accountId, goodId, quantity);
             View.printCartInfo(shop, accountId);
-            return Controller.getGoodInfo(shop, goodId);
+            return shopService.printGoodInfoInShop(shop, goodId);
         }));
 /*
         /addToCart?accountId=0&goodId=0&quantity=10
 */
         get("/buyCart", ((request, response) -> {
             Integer accountId = Integer.parseInt(request.queryParams("accountId"));
-            String str = Controller.buyCart(shop, accountId);
+            String str = shopService.buyCart(shop, accountId);
             return str;
         }));
  /*

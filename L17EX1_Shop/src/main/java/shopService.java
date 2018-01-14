@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.*;
 
-public class Controller implements Serializable {
+public class shopService implements Serializable {
     public static final Logger LOGGER = LoggerFactory.getLogger(Shop.class);
 
     public static Shop readShop(){
@@ -57,7 +57,7 @@ public class Controller implements Serializable {
         return goodId;
     }
 
-    public static String getGoodInfo(Shop shop, Integer goodId){
+    public static String printGoodInfoInShop(Shop shop, Integer goodId){
         String idInfo = "ID:" + goodId;
         String goodInfo = shop.mapOfGoods.get(goodId).toString();
         String quantity = " Количество: " + shop.mapOfQuantity.get(goodId);
