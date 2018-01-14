@@ -1,34 +1,31 @@
-import Model.Shop;
-
 import static spark.Spark.get;
 
 public class AppMain {
 
     public static void main(String[] args) {
 
-        Shop shop = shopService.readShop();
+        ShopService controller = new ShopService();
 
         get("/addGoodToShop", (request, response) -> {
-            String nameOfGood = request.queryParams("nameOfGood");
-            Integer priceOfGood = Integer.parseInt(request.queryParams("priceOfGood"));
-            Integer numberOfGood = Integer.parseInt(request.queryParams("numberOfGood"));
-            Integer goodId = shopService.addGoodToShop(shop, nameOfGood, priceOfGood, numberOfGood);
-            View.printGoodInfo(shopService.printGoodInfoInShop(shop, goodId));
-            return shopService.printGoodInfoInShop(shop, goodId);
+            String name = request.queryParams("name");
+            Integer price = Integer.parseInt(request.queryParams("price"));
+            Integer quantity = Integer.parseInt(request.queryParams("quantity"));
+            String result = controller.addGoodToShop(name, price, quantity);
+            return result;
         });
 
 /*
-         /addGoodToShop?nameOfGood="Игрушки"&priceOfGood=15&numberOfGood=6
-                        nameOfGood="Одежда"&priceOfGood=20&numberOfGood=10
-                        nameOfGood="Продукты"&priceOfGood=5&numberOfGood=20
-                        nameOfGood="Телефон"&priceOfGood=50&numberOfGood=5
-                        nameOfGood="Ноутбук"&priceOfGood=100&numberOfGood=5
+         /addGoodToShop?name="Игрушки"&price=15&quantity=6
+                        name="Одежда"&price=20&quantity=10
+                        name="Продукты"&price=5&quantity=20
+                        name="Телефон"&price=50&quantity=5
+                        name="Ноутбук"&price=100&quantity=5
 */
         get("/addNewAccount", ((request, response) -> {
-            String nameOfAccount = request.queryParams("nameOfAccount");
-            Integer accountId = shopService.addNewAccount(shop, nameOfAccount);
-            View.printAccountInfo(shopService.getAccountInfo(shop, accountId));
-            return shopService.getAccountInfo(shop, accountId);
+            String name = request.queryParams("nameOfAccount");
+            Integer accountId = controller.addNewAccount(name);
+            View.printAccountInfo(controller.getAccountInfo(accountId));
+            return controller.getAccountInfo(accountId);
         }));
 /*
         /addNewAccount?nameOfAccount="Вася"
@@ -39,16 +36,16 @@ public class AppMain {
             Integer accountId = Integer.parseInt(request.queryParams("accountId"));
             Integer goodId = Integer.parseInt(request.queryParams("goodId"));
             Integer quantity = Integer.parseInt(request.queryParams("quantity"));
-            shopService.addToCart(shop, accountId, goodId, quantity);
-            View.printCartInfo(shop, accountId);
-            return shopService.printGoodInfoInShop(shop, goodId);
+            controller.addToCart(accountId, goodId, quantity);
+//            View.printCartInfo(accountId);
+            return controller.printGoodInfoInShop(goodId);
         }));
 /*
         /addToCart?accountId=0&goodId=0&quantity=10
 */
         get("/buyCart", ((request, response) -> {
             Integer accountId = Integer.parseInt(request.queryParams("accountId"));
-            String str = shopService.buyCart(shop, accountId);
+            String str = controller.buyCart(accountId);
             return str;
         }));
  /*

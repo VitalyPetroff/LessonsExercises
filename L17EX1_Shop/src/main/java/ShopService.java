@@ -8,20 +8,21 @@ import org.slf4j.LoggerFactory;
 
 import java.io.*;
 
-public class shopService implements Serializable {
-    public static final Logger LOGGER = LoggerFactory.getLogger(Shop.class);
+public class ShopService implements Serializable {
+    private static final Logger LOGGER = LoggerFactory.getLogger(Shop.class);
+    private Shop shop;
 
-    public static Shop readShop(){
+    public ShopService(){
         try {
             FileInputStream fis = new FileInputStream("shopInfo.txt");
             ObjectInputStream ois = new ObjectInputStream(fis);
-            return (Shop) ois.readObject();
+            shop = (Shop)ois.readObject();
         } catch (IOException | ClassNotFoundException e) {
-            return new Shop();
+            shop = new Shop();
         }
     }
 
-    public static void serialize(Shop shop){
+    public void serialize(){
         try {
             FileOutputStream fos = new FileOutputStream("shopInfo.txt");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -33,15 +34,16 @@ public class shopService implements Serializable {
         }
     }
 
-    public static Integer addGoodToShop(Shop shop, String name, int price, int numOfGood) {
+    public String addGoodToShop(String name, int price, int quantity) {
+        String result;
         boolean isShopContainsGood = false;
         Integer goodId = 0;
-        // поиск товара в магазине
+        // поиск товара в магазине и его добавление
         for (Integer id : shop.mapOfGoods.keySet()) {
             Good good = shop.mapOfGoods.get(id);
             if (good.nameOfGood.equals(name)) {
-                Integer quantity = shop.mapOfQuantity.get(id);
-                shop.mapOfQuantity.put(id, quantity + numOfGood);
+                Integer initQuantity = shop.mapOfQuantity.get(id);
+                shop.mapOfQuantity.put(id, initQuantity + quantity);
                 goodId = id;
                 isShopContainsGood = true;
                 break;
@@ -51,20 +53,23 @@ public class shopService implements Serializable {
         if (!isShopContainsGood) {
             goodId = shop.mapOfGoods.size();
             shop.mapOfGoods.put(goodId, new Good(name, price));
-            shop.mapOfQuantity.put(goodId, numOfGood);
+            shop.mapOfQuantity.put(goodId, quantity);
         }
-        serialize(shop);
-        return goodId;
+        serialize();
+        result = "Товар " + goodId +
+                " теперь в магазине в количестве " + shop.mapOfQuantity.get(goodId) +
+                " по цене " + price;
+        return result;
     }
 
-    public static String printGoodInfoInShop(Shop shop, Integer goodId){
+    public String printGoodInfoInShop(Integer goodId){
         String idInfo = "ID:" + goodId;
         String goodInfo = shop.mapOfGoods.get(goodId).toString();
         String quantity = " Количество: " + shop.mapOfQuantity.get(goodId);
         return (idInfo + goodInfo + quantity);
     }
 
-    public static Integer addNewAccount(Shop shop, String name) {
+    public Integer addNewAccount(String name) {
         boolean isShopContainAccount = false;
         Integer accountId = 0;
         // проверка наличия аккаунта в магазине
@@ -81,35 +86,40 @@ public class shopService implements Serializable {
             accountId = shop.mapOfAccounts.size();
             shop.mapOfAccounts.put(accountId, new Account(name));
         }
-        serialize(shop);
+        serialize();
         return accountId;
     }
 
-    public static String getAccountInfo(Shop shop, Integer id){
+    public String getAccountInfo(Integer id){
         String idInfo = "ID:" + id;
         String accountInfo = shop.mapOfAccounts.get(id).toString();
         return (idInfo + accountInfo);
     }
 
-    public static void addToCart(Shop shop, Integer accountId, Integer goodId, Integer quantity) {
+    public String addToCart(Integer accountId, Integer goodId, Integer quantity) {
+        String result;
         if (shop.mapOfQuantity.containsKey(goodId)) { // есть ли данный товар в магазине
-            Integer quantityOfGoodInShop = shop.mapOfQuantity.get(goodId);
-            if (quantityOfGoodInShop < quantity) { // в достаточном ли количестве товар
-                quantity = quantityOfGoodInShop;
+            Integer quantityInShop = shop.mapOfQuantity.get(goodId);
+            if (quantityInShop < quantity) { // в достаточном ли количестве товар
+                quantity = quantityInShop;
             }
             CartOfAccount cart = shop.mapOfAccounts.get(accountId).cartOfAccount;
             Integer quantityToCart = quantity;
             if (cart.mapOfQuantity.containsKey(goodId)) {   // был ли товар ранее добавлен в корзину аккаунта
                 quantityToCart += cart.mapOfQuantity.get(goodId);
             }
-            shop.mapOfQuantity.put(goodId, quantityOfGoodInShop - quantity); // изменяем количество товара в магазине
+            shop.mapOfQuantity.put(goodId, quantityInShop - quantity); // изменяем количество товара в магазине
             cart.mapOfPrice.put(goodId, shop.mapOfGoods.get(goodId).priceOfGood);
             cart.mapOfQuantity.put(goodId, quantityToCart); // добавляем товар в корзину
+            serialize();
+            result = "В корзину добавлен товар " + goodId + " в количестве " + quantityToCart;
+        } else {
+            result = "Такого товара в магазине нет";
         }
-        serialize(shop);
+        return result;
     }
 
-    public static String buyCart(Shop shop, Integer accountId) {
+    public String buyCart(Integer accountId) {
         CartOfAccount cart = shop.mapOfAccounts.get(accountId).cartOfAccount;
         Integer totalPrice = 0;
         for (Integer goodId : cart.mapOfQuantity.keySet()) {
@@ -118,7 +128,7 @@ public class shopService implements Serializable {
         cart.mapOfQuantity.clear();
         cart.mapOfPrice.clear();
         String str = "Сумма покупок составила " + totalPrice + " рублей.";
-        serialize(shop);
+        serialize();
         return str;
     }
 }
