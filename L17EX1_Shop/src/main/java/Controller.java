@@ -2,16 +2,18 @@ import Model.Account;
 import Model.CartOfAccount;
 import Model.Good;
 import Model.Shop;
+
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
 
 public class Controller implements Serializable {
-    public static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(Shop.class);
+    public static final Logger LOGGER = LoggerFactory.getLogger(Shop.class);
 
     public static Shop readShop(){
         try {
-            FileInputStream fis = new FileInputStream("data.txt");
+            FileInputStream fis = new FileInputStream("shopInfo.txt");
             ObjectInputStream ois = new ObjectInputStream(fis);
             return (Shop) ois.readObject();
         } catch (IOException | ClassNotFoundException e) {
@@ -19,9 +21,9 @@ public class Controller implements Serializable {
         }
     }
 
-    public void serialize(Shop shop){
+    public static void serialize(Shop shop){
         try {
-            FileOutputStream fos = new FileOutputStream("data.txt");
+            FileOutputStream fos = new FileOutputStream("shopInfo.txt");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(shop);
             oos.flush();
@@ -51,6 +53,7 @@ public class Controller implements Serializable {
             shop.mapOfGoods.put(goodId, new Good(name, price));
             shop.mapOfQuantity.put(goodId, numOfGood);
         }
+        serialize(shop);
         return goodId;
     }
 
@@ -67,7 +70,7 @@ public class Controller implements Serializable {
         // проверка наличия аккаунта в магазине
         for (Integer id : shop.mapOfAccounts.keySet()) {
             if (shop.mapOfAccounts.get(id).nameOfAccount.equals(name)){
-                System.out.println("Такой ");
+                System.out.println("Такой аккаунт уже существует!");
                 accountId = id;
                 isShopContainAccount = true;
                 break;
@@ -78,6 +81,7 @@ public class Controller implements Serializable {
             accountId = shop.mapOfAccounts.size();
             shop.mapOfAccounts.put(accountId, new Account(name));
         }
+        serialize(shop);
         return accountId;
     }
 
@@ -94,13 +98,15 @@ public class Controller implements Serializable {
                 quantity = quantityOfGoodInShop;
             }
             CartOfAccount cart = shop.mapOfAccounts.get(accountId).cartOfAccount;
+            Integer quantityToCart = quantity;
             if (cart.mapOfQuantity.containsKey(goodId)) {   // был ли товар ранее добавлен в корзину аккаунта
-                quantity += cart.mapOfQuantity.get(goodId);
+                quantityToCart += cart.mapOfQuantity.get(goodId);
             }
             shop.mapOfQuantity.put(goodId, quantityOfGoodInShop - quantity); // изменяем количество товара в магазине
             cart.mapOfPrice.put(goodId, shop.mapOfGoods.get(goodId).priceOfGood);
-            cart.mapOfQuantity.put(goodId, quantity); // добавляем товар в корзину
+            cart.mapOfQuantity.put(goodId, quantityToCart); // добавляем товар в корзину
         }
+        serialize(shop);
     }
 
     public static String buyCart(Shop shop, Integer accountId) {
@@ -112,6 +118,7 @@ public class Controller implements Serializable {
         cart.mapOfQuantity.clear();
         cart.mapOfPrice.clear();
         String str = "Сумма покупок составила " + totalPrice + " рублей.";
+        serialize(shop);
         return str;
     }
 }
