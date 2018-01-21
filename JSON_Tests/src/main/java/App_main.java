@@ -8,18 +8,16 @@ public class App_main {
     public static void main(String[] args) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         User user = new User("Вася", 33);
-        String path = "d:\\HOME-COMP\\Projects\\REPOSITORIUM\\LessonsExercises\\JSON_Tests\\userInfo.json";
-
         String userInfo = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(user);
-
-        mapper.writeValue(new File(path), user);
         System.out.println(userInfo);
 
-        User newUser = mapper.readValue(new File(path), User.class);
-//        mapper.writeValue(new File("d:\\HOME-COMP\\Projects\\REPOSITORIUM\\LessonsExercises\\JSON_Tests\\NewUser.json"),
-//                newUser);
+        String directoryPath = new File("").getAbsolutePath();
+        String jsonPath = directoryPath + "/User.json";
+        mapper.writeValue(new File(jsonPath), user);
 
-//        User newUser = mapper.readValue(str, User.class);
+        User newUser = mapper.readValue(new File(jsonPath), User.class);
+        newUser.setAge(18);
+        newUser.setName("Петя");
         String newUserInfo = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(newUser);
         System.out.println(newUserInfo);
     }

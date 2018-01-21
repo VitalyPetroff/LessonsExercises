@@ -7,6 +7,7 @@ public class MyThread extends Thread {
         this.name = name;
     }
 
+    @Override
     public void run(){
         System.out.println("Выполняется поток " + name);
         try {
@@ -14,6 +15,6 @@ public class MyThread extends Thread {
         } catch (InterruptedException e) {
             System.out.println("Поток прерван");
         }
-        System.out.println("Закончил работу поток" + name);
+        System.out.println("Закончил работу поток " + name);
     }
 }

@@ -9,7 +9,7 @@ public class MyThreadImplements implements Runnable {
             Thread.sleep(500);
         }
         catch (InterruptedException e) {
-            System.out.println("Pause");
+            System.out.println("Поток прерван");
         }
         System.out.println("Finish");
     }
