@@ -7,6 +7,9 @@ public class Account implements Serializable {
     public String nameOfAccount;
     public CartOfAccount cartOfAccount = new CartOfAccount();
 
+    public Account() {
+    }
+
     public Account(String nameOfAccount){
         this.nameOfAccount = nameOfAccount;
     }

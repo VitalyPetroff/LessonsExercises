@@ -7,6 +7,9 @@ public class Good implements Serializable{
     public String nameOfGood;
     public int priceOfGood;
 
+    public Good() {
+    }
+
     public Good(String nameOfGood, int priceOfGood) {
         this.nameOfGood = nameOfGood;
         this.priceOfGood = priceOfGood;
