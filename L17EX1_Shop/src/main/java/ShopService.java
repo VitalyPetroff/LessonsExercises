@@ -125,6 +125,11 @@ public class ShopService implements Serializable {
         for (Integer goodId : cart.mapOfQuantity.keySet()) {
             totalPrice = cart.mapOfQuantity.get(goodId) * cart.mapOfPrice.get(goodId);
         }
+        try {
+            Thread.currentThread().sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         cart.mapOfQuantity.clear();
         cart.mapOfPrice.clear();
         String str = "Сумма покупок составила " + totalPrice + " рублей.";

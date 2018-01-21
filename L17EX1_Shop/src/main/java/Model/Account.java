@@ -13,7 +13,7 @@ public class Account implements Serializable {
 
     @Override
     public String toString() {
-        String str = " Имя аккаунта: " + nameOfAccount;
+        String str = "Имя аккаунта: " + nameOfAccount;
         return str;
     }
 }
