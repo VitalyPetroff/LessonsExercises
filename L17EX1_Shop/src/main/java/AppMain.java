@@ -22,15 +22,15 @@ public class AppMain {
                         name="Ноутбук"&price=100&quantity=5
 */
         get("/addNewAccount", ((request, response) -> {
-            String name = request.queryParams("nameOfAccount");
+            String name = request.queryParams("name");
             Integer accountId = controller.addNewAccount(name);
             View.printAccountInfo(controller.getAccountInfo(accountId));
             return controller.getAccountInfo(accountId);
         }));
 /*
-        /addNewAccount?nameOfAccount="Вася"
-                nameOfAccount="Петя"
-                nameOfAccount="Коля"
+        /addNewAccount?name="Вася"
+                name="Петя"
+                name="Коля"
 */
         get("/addToCart", ((request, response) -> {
             Integer accountId = Integer.parseInt(request.queryParams("accountId"));
