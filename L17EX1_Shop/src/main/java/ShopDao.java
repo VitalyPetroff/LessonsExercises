@@ -5,8 +5,8 @@ import java.io.File;
 import java.io.IOException;
 
 public class ShopDao {
-    String jsonPath;
-    ObjectMapper mapper = new ObjectMapper();
+    private String jsonPath;
+    private ObjectMapper mapper = new ObjectMapper();
 
     public ShopDao(String jsonPath) {
         this.jsonPath = jsonPath;
