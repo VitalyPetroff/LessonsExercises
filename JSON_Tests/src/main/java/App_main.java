@@ -11,9 +11,9 @@ public class App_main {
         String userInfo = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(user);
         System.out.println(userInfo);
 
-//        String directoryPath = new File("").getAbsolutePath();
-//        String jsonPath = directoryPath + "/User.json";
-        String jsonPath = "./User.json";
+//        String basePath = new File("").getAbsolutePath();
+//        String jsonPath = basePath + "/User.json";
+        String jsonPath = "User.json";
         mapper.writeValue(new File(jsonPath), user);
 
 
