@@ -11,27 +11,32 @@ import java.io.*;
 public class ShopService implements Serializable {
     private static final Logger LOGGER = LoggerFactory.getLogger(Shop.class);
     private Shop shop;
+    private ShopDao shopDao;
 
     public ShopService(){
-        try {
-            FileInputStream fis = new FileInputStream("shopInfo.txt");
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            shop = (Shop)ois.readObject();
-        } catch (IOException | ClassNotFoundException e) {
-            shop = new Shop();
-        }
+//        try {
+//            FileInputStream fis = new FileInputStream("shopInfo.txt");
+//            ObjectInputStream ois = new ObjectInputStream(fis);
+//            shop = (Shop)ois.readObject();
+//        } catch (IOException | ClassNotFoundException e) {
+//            shop = new Shop();
+//        }
+        shopDao = new ShopDao("jsonShop.json");
+        shop = shopDao.read();
     }
 
     public void serialize(){
-        try {
-            FileOutputStream fos = new FileOutputStream("shopInfo.txt");
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(shop);
-            oos.flush();
-            oos.close();
-        } catch (Exception e) {
-            LOGGER.error(e.getMessage(), e);
-        }
+//        try {
+//            FileOutputStream fos = new FileOutputStream("shopInfo.txt");
+//            ObjectOutputStream oos = new ObjectOutputStream(fos);
+//            oos.writeObject(shop);
+//            oos.flush();
+//            oos.close();
+//        } catch (Exception e) {
+//            LOGGER.error(e.getMessage(), e);
+//        }
+
+        shopDao.write(shop);
     }
 
     public String addGoodToShop(String name, int price, int quantity) {
