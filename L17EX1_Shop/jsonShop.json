@@ -1,0 +1,1 @@
+{"mapOfGoods":{"0":{"nameOfGood":"\"Одежда\"","priceOfGood":20},"1":{"nameOfGood":"\"Игрушки\"","priceOfGood":15}},"mapOfQuantity":{"0":93,"1":19},"mapOfAccounts":{"0":{"nameOfAccount":"Петя","cartOfAccount":{"mapOfQuantity":{},"mapOfPrice":{}}},"1":{"nameOfAccount":"Вася","cartOfAccount":{"mapOfQuantity":{},"mapOfPrice":{}}}}}
